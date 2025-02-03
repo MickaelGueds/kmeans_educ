@@ -1,0 +1,88 @@
+Metodologia da Clusterização
+
+Este documento descreve as etapas utilizadas para processar os dados educacionais dos municípios e agrupá-los em clusters utilizando técnicas de normalização e aprendizado não supervisionado.
+1. Preparação dos Dados
+
+O objetivo é agrupar municípios do Piauí com base no desempenho educacional e no volume de matrículas e docentes. No entanto, essas variáveis possuem escalas muito diferentes e podem ser influenciadas por outliers. Para evitar distorções nos agrupamentos, aplicamos transformações nos dados antes de alimentar o modelo de clusterização.
+1.1 Variáveis Utilizadas
+
+Foram consideradas as seguintes métricas para a clusterização:
+
+    Indicador de Desenvolvimento da Educação Básica (IDEB) do ensino fundamental.
+    Número de matrículas no ensino fundamental.
+    Número de matrículas no ensino médio.
+    Número de docentes no ensino fundamental.
+    Número de docentes no ensino médio.
+
+2. Transformação das Variáveis
+2.1 Normalização do IDEB (IDEB Escalonado)
+
+O IDEB foi padronizado utilizando a técnica de escalonamento robusto (RobustScaler), que transforma os valores em relação à mediana e ao intervalo interquartil (IQR). Isso reduz a influência de valores extremos (outliers) e torna a comparação entre municípios mais justa.
+
+Fórmula aplicada:
+IDEB Escalonado=IDEB−mediana(IDEB)IQR(IDEB)
+IDEB Escalonado=IQR(IDEB)IDEB−mediana(IDEB)​
+
+Onde:
+
+    Mediana(IDEB) é o valor central da distribuição do IDEB.
+    IQR(IDEB) é a diferença entre o 3º quartil (Q3) e o 1º quartil (Q1), ou seja, a faixa de valores onde se concentra a maioria dos municípios.
+
+° Por que usar essa normalização?
+O IDEB pode variar em uma escala pequena (exemplo: 3.0 a 7.0), mas ainda assim conter outliers. O escalonamento robusto mantém a estrutura original dos dados, mas reduz o impacto de valores extremos.
+2.2 Construção do Índice de Volume (PCA)
+
+As métricas de volume (matrículas e docentes) representam quantidades absolutas e possuem escalas muito diferentes. Por exemplo:
+
+    Um município pode ter 10.000 matrículas no ensino fundamental, enquanto outro pode ter apenas 200.
+    A diferença entre municípios grandes e pequenos pode distorcer a clusterização.
+
+Para corrigir esse problema, aplicamos três transformações:
+
+    Transformação Logarítmica (log1p)
+        Como os valores de matrículas/docentes crescem de forma exponencial, aplicamos a transformação:
+        x′=log⁡(1+x)
+        x′=log(1+x)
+        Isso reduz o efeito de diferenças extremas entre municípios grandes e pequenos.
+
+    Escalonamento Robusto (RobustScaler)
+        Como no caso do IDEB, aplicamos um escalonamento baseado na mediana e no intervalo interquartil (IQR) para normalizar os valores de matrícula/docentes.
+
+    Redução de Dimensionalidade (PCA - Principal Component Analysis)
+        Para consolidar as variáveis de matrícula e docentes em um único índice, usamos Análise de Componentes Principais (PCA).
+        O PCA transforma várias variáveis correlacionadas em uma única dimensão, chamada Índice de Volume, que representa a variação conjunta das métricas de volume.
+        A primeira componente principal (PC1) captura a maior variação possível dos dados, tornando o modelo mais eficiente.
+
+° Por que usar PCA?
+
+    Matrículas e docentes são altamente correlacionados.
+    O PCA reduz a redundância de informações e cria uma única variável que resume o "tamanho educacional" do município.
+
+3. Aplicação do K-Means
+
+Com os dados transformados, aplicamos o algoritmo de K-Means para segmentar os municípios em clusters.
+
+    As variáveis utilizadas na clusterização foram:
+        IDEB Escalonado (qualidade da educação).
+        Índice de Volume (tamanho do sistema educacional).
+
+° Por que usar apenas essas duas variáveis?
+
+    Usar muitas variáveis pode aumentar a complexidade do modelo sem necessariamente melhorar a clusterização.
+    Essas duas variáveis resumem qualidade (IDEB) e quantidade (Volume Index) de forma eficiente.
+
+O K-Means foi treinado para encontrar k clusters, sendo k escolhido com base no método do cotovelo, que mede a variação intra-cluster para determinar o número ideal de grupos.
+4. Resultado Final
+
+Após a clusterização:
+
+    Criamos um CSV contendo cada município, seu cluster e a proximidade ao centro do cluster.
+    A proximidade foi medida pela distância euclidiana entre cada ponto e o centro do cluster correspondente. Quanto menor a distância, mais representativo o município é dentro do seu cluster.
+
+
+
+Referencia:
+    Bishop, C. M. (2006). Pattern Recognition and Machine Learning. Springer: Este livro aborda técnicas de aprendizado não supervisionado, como K-Means e PCA, além de métodos de normalização como o escalonamento robusto.
+    Johnson, R. A., & Wichern, D. W. (2007). Applied Multivariate Statistical Analysis (6ª ed.): Pearson.Este livro detalha a Análise de Componentes Principais (PCA) e outras técnicas estatísticas multivariadas.
+
+    Medium – Towards Data Science:Artigos práticos sobre escalonamento robusto (RobustScaler), transformação logarítmica (log1p) e clusterização com K-Means disponíveis em publicações como "Understanding RobustScaler" e "K-Means Clustering with Python".
