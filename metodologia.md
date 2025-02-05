@@ -135,3 +135,7 @@ Decidir o número ideal de clusters é uma parte crucial da análise de K-Means.
 - 📖 Johnson, R. A., & Wichern, D. W. (2007). *Applied Multivariate Statistical Analysis* (6ª ed.). Pearson.
 - 📄 Medium – Towards Data Science:
   - 🔗 Artigos sobre `RobustScaler`, transformação logarítmica (`log1p`) e clusterização com K-Means.
+
+## Sugestões
+- Mais variaveis que demonstrem a qualidade educacional como taxa de aprovação do enem
+- Talvez uma proporção de matriculas/docentes o que resulta em uma variavel que demonstr a carga dos professores nas escolas
