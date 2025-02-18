@@ -98,7 +98,10 @@ scikit-learn==1.6.1
 scipy==1.15.1
 seaborn==0.13.2
 Send2Trash==1.8.3
+<<<<<<< HEAD
 streamlit
+=======
+>>>>>>> 6573cdb96dfcce39229496cb823c3e2d9f1b67fe
 setuptools==75.8.0
 shapely==2.0.7
 six==1.16.0
