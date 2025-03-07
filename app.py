@@ -16,7 +16,7 @@ df_cidades = pd.read_csv("cidades_clusterizadas.csv")
 # Mapeamento de nomes baseado em pontos fracos
 cluster_nomes = {
     0: "Emergência Educacional",
-    1: "Infraestrutura Precária",
+    1: "Pouca infraestrutura",
     2: "Contradição Educacional"
 }
 
