@@ -16,5 +16,7 @@ def distorcao():
         'Total_M': 'tx_distorcao_medio',
         'Total_F': 'tx_distorcao_fundamental'
     })
+    df_distorção_final['tx_distorcao_medio'] = df_distorção_final['tx_distorcao_medio'].astype(float)
+    df_distorção_final['tx_distorcao_fundamental'] = df_distorção_final['tx_distorcao_fundamental'].astype(float)
     return df_distorção_final
 

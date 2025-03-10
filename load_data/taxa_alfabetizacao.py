@@ -10,5 +10,6 @@ def taxa_alfabetizacao():
     df_taxa_alfabetizacao1 = df_taxa_alfabetizacao[df_taxa_alfabetizacao['Município'].str.endswith("(PI)", na=False)]
     df_taxa_alfabetizacao1 = df_taxa_alfabetizacao1.rename(columns={'Município': 'Cidades'})
     df_taxa_alfabetizacao1['Cidades'] = df_taxa_alfabetizacao1['Cidades'].str.replace(" \(PI\)$", "", regex=True)
-    
+    df_taxa_alfabetizacao1 = df_taxa_alfabetizacao1.rename(columns={'Total': 'Total_alfabetização'})
+    df_taxa_alfabetizacao1['Total_alfabetização'] = df_taxa_alfabetizacao1['Total_alfabetização'].str.replace(",", ".", regex=True).astype(float)
     return df_taxa_alfabetizacao1
