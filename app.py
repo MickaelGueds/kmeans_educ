@@ -149,10 +149,10 @@ CONFIG = {
         "titulo": "Análise Educacional Municipal por Clusters",
         "descricao": "Este dashboard apresenta uma análise das condições educacionais dos municípios utilizando a técnica de K-Means.",
         "arquivos": {
-            "medias": "medias_clusters.csv",
-            "diagnostico": "diagnostico_clusters_3.csv",
-            "cidades": "cidades_clusterizadas.csv",
-            "mapa": "mapa_interativo.html"
+            "medias": "output/medias_clusters_educ.csv",
+            "diagnostico": "output/diagnostico_clusters_educ.csv",
+            "cidades": "output/cidades_clusterizadas_educ.csv",
+            "mapa": "output/mapa_interativo_clusters_educacao.html"
         },
         "colunas_cluster": {
             "df_medias": "Cluster",
@@ -160,16 +160,16 @@ CONFIG = {
             "df_cidades": "Cluster"
         },
         "rotulos_cluster": {
-            0: "Emergência Educacional",
-            1: "Pouca infraestrutura",
-            2: "Contradição Educacional"
+            "0": "Emergência Educacional",
+            "1": "Pouca infraestrutura",
+            "2": "Contradição Educacional"
         },
         "indicadores": """
-        - **Taxa de Distorção Idade-Série**: Percentual de alunos com idade acima da esperada para a série.
-        - **Taxa de Escolas por Habitante**: Número de escolas proporcional à população.
-        - **IDEB (Índice de Desenvolvimento da Educação Básica)**: Mede a qualidade do ensino.
-        - **Total de Alfabetização**: Percentual da população alfabetizada.
-        - **Taxa de Abandono Escolar**: Percentual de alunos que deixaram a escola.
+        - **Taxa de Distorção Idade-Série (tx_distorcao_fundamental)**: Percentual de alunos com idade acima da esperada para a série.
+        - **Taxa de Escolas por Habitante (taxa_escolas_por_habitante)**: Número de escolas proporcional à população.
+        - **IDEB Anos Iniciais (ideb_ano_inicial)**: Índice de Desenvolvimento da Educação Básica para os anos iniciais do ensino fundamental.
+        - **Total de Alfabetização (Total_alfabetização)**: Percentual da população alfabetizada.
+        - **Taxa de Abandono Escolar (Taxa de abandonos EF)**: Percentual de alunos que deixaram a escola no Ensino Fundamental.
         """,
         "perfis": """
         Através da análise estatística, identificamos 3 perfis distintos de municípios com base em seus indicadores educacionais:
@@ -180,8 +180,14 @@ CONFIG = {
 
         3. **Contradição Educacional**: Municípios com bons indicadores em algumas áreas, mas com deficiências significativas em outras, apresentando um perfil contraditório.
         """,
-        "colunas_diagnostico": ["Nome do Cluster", "Pontos Fortes", "Pontos Fracos", "Recomendações"],
-        "coluna_busca": "Cidade",
+        "colunas_diagnostico": ["Perfil", "Pontos Fortes", "Pontos Fracos", "Recomendações"],
+        "coluna_busca": "Cidades",
+        "colunas_selecionadas": ["Nome do Cluster", "tx_distorcao_fundamental", "taxa_escolas_por_habitante", "ideb_ano_inicial", "Total_alfabetização", "Taxa de abandonos EF"],
+        "cor_grafico": {
+            "Emergência Educacional": "#d32f2f",
+            "Pouca infraestrutura": "#ffa000",
+            "Contradição Educacional": "#388e3c"
+        },
         "metodologia": """
         ### Processamento dos Dados
         
@@ -223,16 +229,48 @@ def carregar_dados(tipo):
     try:
         # Carregar arquivos conforme disponibilidade
         if "medias" in config["arquivos"]:
-            dados["df_medias"] = pd.read_csv(config["arquivos"]["medias"])
+            caminho_arquivo = config["arquivos"]["medias"]
+            if os.path.exists(caminho_arquivo):
+                dados["df_medias"] = pd.read_csv(caminho_arquivo)
+            else:
+                caminho_alt = f"output/{caminho_arquivo}"
+                if os.path.exists(caminho_alt):
+                    dados["df_medias"] = pd.read_csv(caminho_alt)
+                else:
+                    st.warning(f"Arquivo de médias não encontrado: {caminho_arquivo}")
         
         if "diagnostico" in config["arquivos"]:
-            dados["df_diagnostico"] = pd.read_csv(config["arquivos"]["diagnostico"])
+            caminho_arquivo = config["arquivos"]["diagnostico"]
+            if os.path.exists(caminho_arquivo):
+                dados["df_diagnostico"] = pd.read_csv(caminho_arquivo)
+            else:
+                caminho_alt = f"output/{caminho_arquivo}"
+                if os.path.exists(caminho_alt):
+                    dados["df_diagnostico"] = pd.read_csv(caminho_alt)
+                else:
+                    st.warning(f"Arquivo de diagnóstico não encontrado: {caminho_arquivo}")
         
         if "cidades" in config["arquivos"]:
-            dados["df_cidades"] = pd.read_csv(config["arquivos"]["cidades"])
+            caminho_arquivo = config["arquivos"]["cidades"]
+            if os.path.exists(caminho_arquivo):
+                dados["df_cidades"] = pd.read_csv(caminho_arquivo)
+            else:
+                caminho_alt = f"output/{caminho_arquivo}"
+                if os.path.exists(caminho_alt):
+                    dados["df_cidades"] = pd.read_csv(caminho_alt)
+                else:
+                    st.warning(f"Arquivo de cidades não encontrado: {caminho_arquivo}")
         
-        if "representativos" in config["arquivos"] and os.path.exists(config["arquivos"]["representativos"]):
-            dados["df_representativos"] = pd.read_csv(config["arquivos"]["representativos"])
+        if "representativos" in config["arquivos"]:
+            caminho_arquivo = config["arquivos"]["representativos"]
+            if os.path.exists(caminho_arquivo):
+                dados["df_representativos"] = pd.read_csv(caminho_arquivo)
+            else:
+                caminho_alt = f"output/{caminho_arquivo}"
+                if os.path.exists(caminho_alt):
+                    dados["df_representativos"] = pd.read_csv(caminho_alt)
+                else:
+                    st.warning(f"Arquivo de municípios representativos não encontrado: {caminho_arquivo}")
         
         # Preparar rótulos de cluster
         col_cluster_medias = config["colunas_cluster"]["df_medias"]
@@ -254,6 +292,8 @@ def carregar_dados(tipo):
             if col_cluster_diagnostico in dados["df_diagnostico"].columns:
                 if tipo == "saneamento":
                     nome_coluna = "Perfil"
+                elif tipo == "educacao":
+                    nome_coluna = "Perfil"
                 else:
                     nome_coluna = "Nome do Cluster"
                 
@@ -270,9 +310,18 @@ def carregar_dados(tipo):
                     dados["df_cidades"][nome_coluna] = dados["df_cidades"][col_cluster_cidades].astype(str).map(rotulos)
         
         # Carregar mapa HTML se existir
-        if "mapa" in config["arquivos"] and os.path.exists(config["arquivos"]["mapa"]):
-            with open(config["arquivos"]["mapa"], "r", encoding="utf-8") as file:
-                dados["html_mapa"] = file.read()
+        if "mapa" in config["arquivos"]:
+            caminho_arquivo = config["arquivos"]["mapa"]
+            caminho_alt = f"output/{caminho_arquivo}"
+            
+            if os.path.exists(caminho_arquivo):
+                with open(caminho_arquivo, "r", encoding="utf-8") as file:
+                    dados["html_mapa"] = file.read()
+            elif os.path.exists(caminho_alt):
+                with open(caminho_alt, "r", encoding="utf-8") as file:
+                    dados["html_mapa"] = file.read()
+            else:
+                st.warning(f"Arquivo de mapa não encontrado: {caminho_arquivo}")
         
         return dados
     
@@ -293,6 +342,7 @@ def exibir_analise(tipo):
     # Carregar dados
     dados = carregar_dados(tipo)
     if not dados:
+        st.error(f"Não foi possível carregar os dados para a análise de {tipo}.")
         return
     
     # -----------------------------------
@@ -313,13 +363,41 @@ def exibir_analise(tipo):
     st.header("📊 Médias dos Indicadores por Cluster")
     if "df_medias" in dados:
         if "colunas_selecionadas" in config:
-            colunas = config["colunas_selecionadas"]
+            if tipo == "educacao":
+                # Para educação, criamos um DataFrame com nomes mais amigáveis para exibição
+                df_display = dados["df_medias"].copy()
+                # Mapear os nomes técnicos para nomes amigáveis
+                cols_map = {
+                    "tx_distorcao_fundamental": "Taxa de Distorção (%)",
+                    "taxa_escolas_por_habitante": "Taxa de Escolas",
+                    "ideb_ano_inicial": "IDEB Anos Iniciais",
+                    "Total_alfabetização": "Alfabetização (%)",
+                    "Taxa de abandonos EF": "Taxa de Abandono (%)"
+                }
+                for old_col, new_col in cols_map.items():
+                    if old_col in df_display.columns:
+                        df_display = df_display.rename(columns={old_col: new_col})
+                
+                # Adicionar coluna de Nome do Cluster se não existir
+                if "Nome do Cluster" not in df_display.columns:
+                    col_cluster = config["colunas_cluster"]["df_medias"]
+                    df_display["Nome do Cluster"] = df_display[col_cluster].astype(str).map(config["rotulos_cluster"])
+                
+                # Selecionar colunas para exibição
+                friendly_cols = ["Nome do Cluster"]
+                for col in config["colunas_selecionadas"][1:]:
+                    if col in cols_map:
+                        friendly_cols.append(cols_map[col])
+                
+                st.dataframe(df_display[friendly_cols], use_container_width=True)
+            else:
+                colunas = config["colunas_selecionadas"]
+                st.dataframe(dados["df_medias"][colunas], use_container_width=True)
         else:
-            # Para educação, selecionamos todas exceto a coluna original do cluster
+            # Para outros casos, selecionamos todas exceto a coluna original do cluster
             col_cluster = config["colunas_cluster"]["df_medias"]
             colunas = ["Nome do Cluster"] + [col for col in dados["df_medias"].columns if col != col_cluster and col != "Nome do Cluster"]
-            
-        st.dataframe(dados["df_medias"][colunas], use_container_width=True)
+            st.dataframe(dados["df_medias"][colunas], use_container_width=True)
 
     # -----------------------------------
     # 🔹 Seção 4 - Mapa Interativo
@@ -328,7 +406,7 @@ def exibir_analise(tipo):
     if "html_mapa" in dados:
         st.components.v1.html(dados["html_mapa"], height=600)
     else:
-        st.error(f"Arquivo de mapa não encontrado para {tipo}.")
+        st.warning(f"Mapa interativo não disponível para {tipo}. Certifique-se de que o arquivo existe no caminho especificado.")
 
     # -----------------------------------
     # 🔹 Seção 5 - Diagnóstico dos Clusters
@@ -336,6 +414,8 @@ def exibir_analise(tipo):
     st.header("📋 Diagnóstico dos Clusters")
     if "df_diagnostico" in dados and "colunas_diagnostico" in config:
         st.dataframe(dados["df_diagnostico"][config["colunas_diagnostico"]], use_container_width=True)
+    else:
+        st.warning(f"Dados de diagnóstico não disponíveis para {tipo}.")
 
     # -----------------------------------
     # 🔹 Seção 6 - Municípios Representativos (apenas para saneamento)
@@ -375,6 +455,8 @@ def exibir_analise(tipo):
                         title="Distribuição de Municípios por Cluster")
             fig.update_layout(yaxis={'categoryorder':'total ascending'})
             st.plotly_chart(fig, use_container_width=True)
+    else:
+        st.warning(f"Dados de municípios não disponíveis para {tipo}.")
 
     # -----------------------------------
     # 🔹 Seção 8 - Dados Detalhados (Expansível)
@@ -387,8 +469,8 @@ def exibir_analise(tipo):
             # Definir coluna para busca
             coluna_busca = config.get("coluna_busca", "Cidades")
             
-            # Tentar diferentes nomes de coluna para busca se necessário
-            if coluna_busca not in dados["df_cidades"].columns and tipo == "educacao":
+            # Para educação, usar sempre a coluna Cidades
+            if tipo == "educacao":
                 coluna_busca = "Cidades"
             
             # Filtrar dados se houver busca
@@ -399,6 +481,8 @@ def exibir_analise(tipo):
             
             # Exibir dados
             st.dataframe(filtered_df, use_container_width=True)
+        else:
+            st.warning("Dados detalhados por município não disponíveis.")
 
     # -----------------------------------
     # 🔹 Seção 9 - Metodologia
