@@ -1,0 +1,26 @@
+cluster,Taxa_Mortalidade Materna (nº absoluto) (2023),Taxa_Mortalidade na Infância (nº absoluto) (2023),Taxa_Mortalidade Precoce (nº absoluto) (2023),Taxa_Percentual de internações por condições sensíveis à atenção primária (2024),Pontos Fortes,Pontos Fracos,Recomendações
+0,4.73e-07,0.00019,0.00013,32.97,"- Baixa mortalidade materna
+- Mortalidade precoce controlada","- Taxa mais alta de internações sensíveis (32,97%)
+- Mortalidade infantil moderada","- Fortalecer atenção primária
+- Ampliar cobertura de programas preventivos
+- Qualificar equipes de saúde da família"
+1,0.000135635,0.000203,0.000262,22.11,"- Internações sensíveis controladas (22,11%)","- Mortalidade materna extremamente alta (0,000136)
+- Mortalidade precoce elevada","- Investimento urgente em saúde materna
+- Implementar protocolos de emergência obstétrica
+- Capacitar equipes em assistência ao parto"
+2,1.8e-07,0.000175,0.000498,24.51,"- Mortalidade materna baixa
+- Mortalidade infantil controlada","- Maior taxa de mortalidade precoce (0,000498)
+- Internações sensíveis moderadas (24,51%)","- Programas para controle de doenças crônicas
+- Melhorar acesso a especialistas
+- Monitoramento de pacientes de risco"
+3,0.0,0.000729,0.000126,21.72,"- Zero mortalidade materna
+- Internações sensíveis baixas (21,72%)
+- Mortalidade precoce controlada","- Taxa mais alta de mortalidade infantil (0,000729)","- Fortalecer assistência pediátrica
+- Melhorar acompanhamento pré-natal e neonatal
+- Ampliar cobertura vacinal"
+4,0.0,9.2e-05,0.0001,20.79,"- Zero mortalidade materna
+- Menor mortalidade infantil (0,000092)
+- Menor taxa de internações sensíveis (20,79%)
+- Menor mortalidade precoce (0,000100)",- Nenhum indicador destaca-se negativamente,"- Manutenção das boas práticas
+- Servir como modelo para outros municípios
+- Documentar estratégias bem-sucedidas"

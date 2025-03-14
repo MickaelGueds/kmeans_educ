@@ -1,0 +1,31 @@
+cluster,tx_acesso_agua_rede_geral,tx_tratamento_esgoto,tx_cobertura_coleta_residuos,destino_correto,banheiro_no_domicílio,drenagem e manejo de águas pluviais,politica_municipal_baseamento,Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,80.93,1.89,74.36,0.11,95.1,0.17,0.74,Boa infraestrutura básica sem tratamento,"- Melhor acesso à água (80,93%)
+- Alta taxa de cobertura de coleta de resíduos (74,36%)
+- Excelente presença de banheiros nos domicílios (95,10%)","- Tratamento de esgoto muito baixo (1,89%)
+- Menor taxa de destino correto de resíduos (11%)
+- Baixa presença de drenagem pluvial (17%)","- Priorizar investimentos em tratamento de esgoto
+- Implementar sistemas adequados de destinação final de resíduos
+- Desenvolver projetos de drenagem urbana
+- Fortalecer políticas municipais de saneamento"
+1,77.6,23.35,71.59,0.31,91.48,0.36,0.92,Infraestrutura completa com tratamento de esgoto,"- Taxa de tratamento de esgoto muito superior (23,35%)
+- Melhor destino correto de resíduos (31%)
+- Maior presença de drenagem pluvial (36%)
+- Melhor índice de política municipal (92%)","- Ainda há potencial para ampliar o tratamento de esgoto
+- 69% dos municípios ainda não têm destinação correta de resíduos","- Expandir a cobertura de tratamento de esgoto
+- Compartilhar boas práticas com outros municípios
+- Ampliar sistemas de destinação adequada de resíduos
+- Servir como modelo para políticas municipais"
+2,31.97,2.58,39.35,0.14,77.12,0.28,0.81,"Infraestrutura deficiente, baixo acesso à água","- Boa presença de política municipal (81%)
+- Tratamento de esgoto ligeiramente melhor que clusters 0 e 3","- Acesso à água extremamente baixo (31,97%)
+- Baixa cobertura de coleta de resíduos (39,35%)
+- Menor presença de banheiros nos domicílios (77,12%)","- Investimento emergencial em sistemas de abastecimento de água
+- Ampliar serviços básicos de coleta de resíduos
+- Programas de construção de banheiros/sanitários
+- Aproveitar a existência de políticas municipais para implementação de projetos"
+3,69.27,1.83,49.93,0.17,87.47,0.22,0.7,Infraestrutura intermediária em desenvolvimento,"- Acesso à água razoável (69,27%)
+- Presença moderada de banheiros (87,47%)","- Menor taxa de tratamento de esgoto (1,83%)
+- Coleta de resíduos limitada (49,93%)
+- Menor índice de política municipal (70%)","- Expandir rede de abastecimento de água
+- Melhorar sistemas de coleta de resíduos
+- Implementar políticas municipais de saneamento
+- Desenvolver projetos piloto de tratamento de esgoto"
