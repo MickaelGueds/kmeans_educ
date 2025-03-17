@@ -96,11 +96,11 @@ CONFIG = {
             "df_cidades": "cluster"
         },
         "rotulos_cluster": {
-            "0": "Alta demanda em atenção primária",
-            "1": "Vulnerabilidade materna",
-            "2": "Mortalidade precoce elevada",
-            "3": "Vulnerabilidade infantil",
-            "4": "Melhores indicadores gerais"
+        "0": "Melhores indicadores gerais",
+        "1": "Vulnerabilidade materna",
+        "2": "Mortalidade precoce elevada",
+        "3": "Vulnerabilidade infantil",
+        "4": "Alta demanda em atenção primária"
         },
         "indicadores": """
         - **Mortalidade Materna**: Taxa de mortalidade materna por habitante (2023).
