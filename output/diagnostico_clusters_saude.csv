@@ -1,29 +1,25 @@
 cluster,Mortalidade Materna (nº absoluto) (2023),Taxa_Mortalidade na Infância (nº absoluto) (2023),Taxa_Mortalidade Precoce (nº absoluto) (2023),Taxa_Percentual de internações por condições sensíveis à atenção primária (2024),Perfil,Pontos Fortes,Pontos Fracos,Recomendações
-0,0.0,0.00030067390484289674,7.925830225872869e-05,24.230645161290322,"Municípios sem registro de mortalidade materna, com baixa mortalidade precoce","- Mortalidade Materna muito baixa/inexistente (0.00)
-- Mortalidade Precoce baixa (0.000079)
-- Internações Sensíveis (%) abaixo da média (24.23%)",- Nenhum indicador destaca-se negativamente,"- Manter e documentar as boas práticas em saúde materna
-- Servir como modelo para outros municípios em prevenção da mortalidade materna
-- Reforçar as ações preventivas para manter a baixa mortalidade precoce
-- Focar na redução do percentual de internações por condições sensíveis à APS"
-1,35.408790977,0.00019865052626915277,0.00011301406674022194,19.975645161290323,"Municípios com alta mortalidade materna, baixa mortalidade precoce e baixas internações APS","- Mortalidade Precoce baixa (0.000113)
-- Internações Sensíveis (%) abaixo da média (19.98%)",- Mortalidade Materna elevada (35.41),"- Implementar protocolos de emergência obstétrica e de assistência ao pré-natal
-- Investir na capacitação de equipes em saúde materna
-- Investigar as causas da alta mortalidade materna mesmo com baixas internações APS
-- Manter as estratégias que resultam em baixas internações por condições sensíveis à APS"
-2,30.300263100612245,0.000138665795365204,0.00038148340829262243,29.432244897959183,Municípios com mortalidade precoce elevada e alta taxa de internações por condições sensíveis à APS,- Mortalidade Infantil baixa (0.000139),"- Mortalidade Materna elevada (30.30)
-- Mortalidade Precoce elevada (0.000381)
-- Internações Sensíveis (%) elevada (29.43%)","- Desenvolver programas para controle de doenças crônicas
-- Fortalecer a atenção primária para reduzir internações sensíveis
-- Melhorar o acesso a especialistas para casos de doenças crônicas
-- Implementar monitoramento proativo de pacientes em grupos de risco"
-3,40.09707249047619,0.00018107451218479524,0.0005473148312324953,18.383333333333333,"Municípios em situação crítica, com mortalidade precoce e materna muito altas",- Internações Sensíveis (%) abaixo da média (18.38%),"- Mortalidade Materna muito alta (40.10)
-- Mortalidade Precoce muito alta (0.000547)","- Investimento urgente em programas de saúde materna
-- Reforçar atenção a doenças crônicas e preveníveis para reduzir mortalidade precoce
-- Ampliar acesso a especialistas e exames diagnósticos
-- Implementar sistema de vigilância e alerta para casos críticos"
-4,32.852371466983605,0.0003203093564480541,8.825016353743285e-05,32.16049180327869,Municípios com mortalidade infantil elevada e taxa muito alta de internações por condições sensíveis à APS,- Mortalidade Precoce baixa (0.000088),"- Mortalidade Materna elevada (32.85)
-- Mortalidade Infantil elevada (0.000320)
-- Internações Sensíveis (%) muito elevada (32.16%)","- Revisar e fortalecer os programas de atenção primária
-- Melhorar a qualidade do acompanhamento pré-natal e neonatal
-- Desenvolver estratégias específicas para redução da mortalidade infantil
-- Ampliar a capacitação das equipes de saúde da família"
+0,0.0,0.00012178883806659649,0.00010446769749549921,19.72476923076923,"Municípios com baixa vulnerabilidade geral, sem mortalidade materna e menor taxa de internações APS","- Mortalidade Materna inexistente (0.00)
+- Mortalidade Infantil baixa (0.000122)
+- Mortalidade Precoce baixa (0.000104)
+- Internações Sensíveis (%) baixa (19.72%)",- Nenhum indicador destaca-se negativamente,"- Manter e documentar as boas práticas em saúde materna
+- Servir como modelo para outros municípios em prevenção da mortalidade
+- Compartilhar estratégias para baixas taxas de internações por condições sensíveis à APS
+- Monitorar continuamente os indicadores para manter o bom desempenho"
+1,0.0700157114025,0.00017501557990035976,0.00051466947227101,24.5365,Municípios com maior taxa de mortalidade precoce e internações APS moderadas,- Mortalidade Materna baixa (0.07),- Mortalidade Precoce muito alta (0.000515),"- Implementar programas de prevenção e controle de doenças crônicas não transmissíveis
+- Focar em estratégias para redução da mortalidade precoce (30-69 anos)
+- Ampliar ações de prevenção e diagnóstico precoce de câncer e doenças cardiovasculares
+- Manter as boas práticas em saúde materna"
+2,0.0,0.0007726060050275925,0.00012015421049957487,24.348888888888887,Municípios com maior taxa de mortalidade infantil e internações APS moderadas,- Mortalidade Materna inexistente (0.00),- Mortalidade Infantil muito elevada (0.000773),"- Fortalecer programas de atenção à saúde infantil e neonatal
+- Melhorar a qualidade do pré-natal e acompanhamento pediátrico
+- Implementar vigilância ativa de casos de risco para mortalidade infantil
+- Capacitar profissionais em atendimento de emergências pediátricas"
+3,8.828332065363636,0.0001786985023271091,0.00030806295867966365,21.773636363636363,Municípios em situação crítica de mortalidade materna (extremamente alta),- Internações Sensíveis (%) moderada (21.77%),"- Mortalidade Materna extremamente alta (8.83)
+- Mortalidade Precoce moderada-alta (0.000308)","- Intervenção urgente na atenção à saúde materna
+- Auditar casos de óbitos maternos para entender causas evitáveis
+- Implementar protocolos rigorosos de emergência obstétrica
+- Capacitar equipes em saúde materna e desenvolver rede de referência"
+4,0.0,0.00017321407184244328,0.00013609138875192572,32.33530864197531,Municípios com maior taxa de internações por condições sensíveis à APS,- Mortalidade Materna inexistente (0.00),- Internações Sensíveis (%) muito alta (32.34%),"- Revisar e fortalecer a efetividade da atenção primária à saúde
+- Implementar protocolos para manejo de condições sensíveis à APS
+- Capacitar equipes de APS para melhor resolutividade
+- Estabelecer programas de monitoramento de pacientes crônicos para evitar internações"

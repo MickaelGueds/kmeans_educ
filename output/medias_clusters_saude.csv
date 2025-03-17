@@ -1,6 +1,6 @@
 cluster,quantidade_municipios,perfil,Mortalidade Materna,Mortalidade Infantil,Mortalidade Precoce,Internações Sensíveis (%)
-0,31,"Municípios sem registro de mortalidade materna, com baixa mortalidade precoce",0.00,0.000301,0.000079,24.23%
-1,62,"Municípios com alta mortalidade materna, baixa mortalidade precoce e baixas internações APS",35.41,0.000199,0.000113,19.98%
-2,49,Municípios com mortalidade precoce elevada e alta taxa de internações por condições sensíveis à APS,30.30,0.000139,0.000381,29.43%
-3,21,"Municípios em situação crítica, com mortalidade precoce e materna muito altas",40.10,0.000181,0.000547,18.38%
-4,61,Municípios com mortalidade infantil elevada e taxa muito alta de internações por condições sensíveis à APS,32.85,0.000320,0.000088,32.16%
+0,65,"Municípios com baixa vulnerabilidade geral, sem mortalidade materna e menor taxa de internações APS",0.00,0.000122,0.000104,19.72%
+1,40,Municípios com maior taxa de mortalidade precoce e internações APS moderadas,0.07,0.000175,0.000515,24.54%
+2,27,Municípios com maior taxa de mortalidade infantil e internações APS moderadas,0.00,0.000773,0.000120,24.35%
+3,11,Municípios em situação crítica de mortalidade materna (extremamente alta),8.83,0.000179,0.000308,21.77%
+4,81,Municípios com maior taxa de internações por condições sensíveis à APS,0.00,0.000173,0.000136,32.34%

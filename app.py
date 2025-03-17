@@ -9,6 +9,7 @@ st.set_page_config(page_title="Análise Multidimensional por Clusters", layout="
 # Configurações por tipo de análise
 CONFIG = {
     "saneamento": {
+        # Configurações de saneamento mantidas inalteradas...
         "titulo": "Análise de Saneamento Municipal por Clusters",
         "descricao": "Este dashboard apresenta uma análise das condições de saneamento dos municípios utilizando a técnica de K-Means.",
         "arquivos": {
@@ -96,11 +97,11 @@ CONFIG = {
             "df_cidades": "cluster"
         },
         "rotulos_cluster": {
-        "0": "Melhores indicadores gerais",
-        "1": "Vulnerabilidade materna",
-        "2": "Mortalidade precoce elevada",
-        "3": "Vulnerabilidade infantil",
-        "4": "Alta demanda em atenção primária"
+            "0": "Baixa vulnerabilidade geral",
+            "1": "Alta mortalidade precoce",
+            "2": "Alta mortalidade infantil",
+            "3": "Crítico em mortalidade materna",
+            "4": "Alta dependência de APS"
         },
         "indicadores": """
         - **Mortalidade Materna**: Taxa de mortalidade materna por habitante (2023).
@@ -111,15 +112,15 @@ CONFIG = {
         "perfis": """
         Através da análise estatística, identificamos 5 perfis distintos de municípios com base em seus indicadores de saúde:
 
-        1. **Alta demanda em atenção primária**: Municípios com taxas elevadas de internações que poderiam ser evitadas com atenção primária eficaz.
+        1. **Baixa vulnerabilidade geral (65 municípios)**: Municípios sem mortalidade materna, com baixas taxas de mortalidade infantil e precoce e menor taxa de internações por condições sensíveis à APS (19.72%).
 
-        2. **Vulnerabilidade materna**: Municípios com altas taxas de mortalidade materna, indicando problemas na assistência ao pré-natal e parto.
+        2. **Alta mortalidade precoce (40 municípios)**: Municípios com baixa mortalidade materna, porém com a maior taxa de mortalidade precoce (0.000515) e internações APS moderadas (24.54%).
 
-        3. **Mortalidade precoce elevada**: Municípios com alta mortalidade precoce, sugerindo desafios no tratamento de doenças crônicas.
+        3. **Alta mortalidade infantil (27 municípios)**: Municípios sem mortalidade materna, mas com a maior taxa de mortalidade infantil (0.000773) e internações APS moderadas (24.35%).
 
-        4. **Vulnerabilidade infantil**: Municípios com altas taxas de mortalidade infantil, indicando deficiências nos cuidados pediátricos.
+        4. **Crítico em mortalidade materna (11 municípios)**: Municípios com mortalidade materna extremamente alta (8.83), mortalidade precoce moderada-alta (0.000308) e internações APS moderadas (21.77%).
 
-        5. **Melhores indicadores gerais**: Municípios com bom desempenho em todos os indicadores analisados.
+        5. **Alta dependência de APS (81 municípios)**: Municípios sem mortalidade materna, com indicadores de mortalidade moderados, mas com a maior taxa de internações por condições sensíveis à APS (32.34%).
         """,
         "colunas_selecionadas": ["Nome do Cluster", "Mortalidade Materna", "Mortalidade Infantil", 
                                 "Mortalidade Precoce", "Internações Sensíveis (%)"],
@@ -278,18 +279,55 @@ def carregar_dados(tipo):
         col_cluster_cidades = config["colunas_cluster"]["df_cidades"]
         rotulos = config["rotulos_cluster"]
         
-        # Adicionar nomes descritivos aos DataFrames
+        # Função para criar rótulos com número do cluster
+        def get_cluster_label_with_number(cluster_id, description):
+            # Converter para string caso não seja
+            cluster_id = str(cluster_id)
+            # Calcular o número de exibição (cluster 0 -> 1, cluster 1 -> 2, etc.)
+            try:
+                display_num = str(int(cluster_id) + 1)
+            except (ValueError, TypeError):
+                # Se não for possível converter para int, usar o valor original
+                display_num = cluster_id
+            return f"Cluster {display_num}: {description}"
+        
+        # Adicionar nomes descritivos aos DataFrames COM número do cluster
         if "df_medias" in dados:
             if col_cluster_medias in dados["df_medias"].columns:
+                # Adicionar coluna de número do cluster que começa em 1 (com tratamento de erro)
+                try:
+                    dados["df_medias"]["Número do Cluster"] = dados["df_medias"][col_cluster_medias].astype(int) + 1
+                except (ValueError, TypeError):
+                    # Se não for possível converter para int, usar um índice baseado na ordem
+                    unique_clusters = dados["df_medias"][col_cluster_medias].unique()
+                    cluster_map = {c: i+1 for i, c in enumerate(unique_clusters)}
+                    dados["df_medias"]["Número do Cluster"] = dados["df_medias"][col_cluster_medias].map(cluster_map)
+                
                 if tipo == "saneamento":
                     nome_coluna = "Perfil do Cluster"
                 else:
                     nome_coluna = "Nome do Cluster"
                 
-                dados["df_medias"][nome_coluna] = dados["df_medias"][col_cluster_medias].astype(str).map(rotulos)
+                # Criar rótulos que incluem o número do cluster
+                dados["df_medias"][nome_coluna] = dados["df_medias"].apply(
+                    lambda row: get_cluster_label_with_number(
+                        row[col_cluster_medias], 
+                        rotulos.get(str(row[col_cluster_medias]), f"Cluster {row['Número do Cluster']}")
+                    ), 
+                    axis=1
+                )
         
         if "df_diagnostico" in dados:
             if col_cluster_diagnostico in dados["df_diagnostico"].columns:
+                # Adicionar coluna de número do cluster que começa em 1 (com tratamento de erro)
+                try:
+                    dados["df_diagnostico"]["Número do Cluster"] = dados["df_diagnostico"][col_cluster_diagnostico].astype(int) + 1
+                except (ValueError, TypeError):
+                    # Se não for possível converter para int, usar um índice baseado na ordem
+                    unique_clusters = dados["df_diagnostico"][col_cluster_diagnostico].unique()
+                    cluster_map = {c: i+1 for i, c in enumerate(unique_clusters)}
+                    dados["df_diagnostico"]["Número do Cluster"] = dados["df_diagnostico"][col_cluster_diagnostico].map(cluster_map)
+                
                 if tipo == "saneamento":
                     nome_coluna = "Perfil"
                 elif tipo == "educacao":
@@ -297,17 +335,40 @@ def carregar_dados(tipo):
                 else:
                     nome_coluna = "Nome do Cluster"
                 
-                dados["df_diagnostico"][nome_coluna] = dados["df_diagnostico"][col_cluster_diagnostico].astype(str).map(rotulos)
+                # Criar rótulos que incluem o número do cluster
+                dados["df_diagnostico"][nome_coluna] = dados["df_diagnostico"].apply(
+                    lambda row: get_cluster_label_with_number(
+                        row[col_cluster_diagnostico], 
+                        rotulos.get(str(row[col_cluster_diagnostico]), f"Cluster {row['Número do Cluster']}")
+                    ), 
+                    axis=1
+                )
         
         if "df_cidades" in dados:
             if col_cluster_cidades in dados["df_cidades"].columns:
+                # Adicionar coluna de número do cluster que começa em 1 (com tratamento de erro)
+                try:
+                    dados["df_cidades"]["Número do Cluster"] = dados["df_cidades"][col_cluster_cidades].astype(int) + 1
+                except (ValueError, TypeError):
+                    # Se não for possível converter para int, usar um índice baseado na ordem
+                    unique_clusters = dados["df_cidades"][col_cluster_cidades].unique()
+                    cluster_map = {c: i+1 for i, c in enumerate(unique_clusters)}
+                    dados["df_cidades"]["Número do Cluster"] = dados["df_cidades"][col_cluster_cidades].map(cluster_map)
+                
                 if tipo == "saneamento":
                     nome_coluna = "Perfil do Cluster"
                 else:
                     nome_coluna = "Nome do Cluster"
                 
                 if nome_coluna not in dados["df_cidades"].columns:
-                    dados["df_cidades"][nome_coluna] = dados["df_cidades"][col_cluster_cidades].astype(str).map(rotulos)
+                    # Criar rótulos que incluem o número do cluster
+                    dados["df_cidades"][nome_coluna] = dados["df_cidades"].apply(
+                        lambda row: get_cluster_label_with_number(
+                            row[col_cluster_cidades], 
+                            rotulos.get(str(row[col_cluster_cidades]), f"Cluster {row['Número do Cluster']}")
+                        ), 
+                        axis=1
+                    )
         
         # Carregar mapa HTML se existir
         if "mapa" in config["arquivos"]:
@@ -327,6 +388,8 @@ def carregar_dados(tipo):
     
     except Exception as e:
         st.error(f"Erro ao carregar dados: {e}")
+        import traceback
+        st.error(traceback.format_exc())
         return None
 
 # -----------------------------------
@@ -362,11 +425,12 @@ def exibir_analise(tipo):
     # -----------------------------------
     st.header("📊 Médias dos Indicadores por Cluster")
     if "df_medias" in dados:
-        if "colunas_selecionadas" in config:
-            if tipo == "educacao":
-                # Para educação, criamos um DataFrame com nomes mais amigáveis para exibição
+        if tipo == "educacao":
+            # Tratamento especial para educação
+            try:
                 df_display = dados["df_medias"].copy()
-                # Mapear os nomes técnicos para nomes amigáveis
+                
+                # Verificar e mapear colunas se existirem
                 cols_map = {
                     "tx_distorcao_fundamental": "Taxa de Distorção (%)",
                     "taxa_escolas_por_habitante": "Taxa de Escolas",
@@ -374,30 +438,40 @@ def exibir_analise(tipo):
                     "Total_alfabetização": "Alfabetização (%)",
                     "Taxa de abandonos EF": "Taxa de Abandono (%)"
                 }
-                for old_col, new_col in cols_map.items():
-                    if old_col in df_display.columns:
-                        df_display = df_display.rename(columns={old_col: new_col})
                 
-                # Adicionar coluna de Nome do Cluster se não existir
-                if "Nome do Cluster" not in df_display.columns:
-                    col_cluster = config["colunas_cluster"]["df_medias"]
-                    df_display["Nome do Cluster"] = df_display[col_cluster].astype(str).map(config["rotulos_cluster"])
+                # Colunas que vamos exibir
+                columns_to_display = ["Número do Cluster", "Nome do Cluster"]
                 
-                # Selecionar colunas para exibição
-                friendly_cols = ["Nome do Cluster"]
-                for col in config["colunas_selecionadas"][1:]:
-                    if col in cols_map:
-                        friendly_cols.append(cols_map[col])
+                # Adicionar apenas as colunas que realmente existem no dataframe
+                for original_col, display_col in cols_map.items():
+                    if original_col in df_display.columns:
+                        df_display.rename(columns={original_col: display_col}, inplace=True)
+                        columns_to_display.append(display_col)
                 
-                st.dataframe(df_display[friendly_cols], use_container_width=True)
-            else:
-                colunas = config["colunas_selecionadas"]
-                st.dataframe(dados["df_medias"][colunas], use_container_width=True)
+                # Exibir o dataframe com as colunas selecionadas que existem
+                st.dataframe(df_display[columns_to_display], use_container_width=True)
+            except Exception as e:
+                st.error(f"Erro ao processar dados de educação: {e}")
+                # Exibição de fallback: mostrar todas as colunas
+                st.dataframe(dados["df_medias"], use_container_width=True)
         else:
-            # Para outros casos, selecionamos todas exceto a coluna original do cluster
-            col_cluster = config["colunas_cluster"]["df_medias"]
-            colunas = ["Nome do Cluster"] + [col for col in dados["df_medias"].columns if col != col_cluster and col != "Nome do Cluster"]
-            st.dataframe(dados["df_medias"][colunas], use_container_width=True)
+            # Para outros casos
+            if "colunas_selecionadas" in config:
+                # Garantir que as colunas selecionadas incluam o Número do Cluster
+                if "Número do Cluster" not in config["colunas_selecionadas"]:
+                    colunas = ["Número do Cluster"] + config["colunas_selecionadas"]
+                else:
+                    colunas = config["colunas_selecionadas"]
+                
+                # Verificar quais colunas existem no dataframe
+                colunas_existentes = [col for col in colunas if col in dados["df_medias"].columns]
+                
+                st.dataframe(dados["df_medias"][colunas_existentes], use_container_width=True)
+            else:
+                # Para outros casos, selecionamos todas exceto a coluna original do cluster
+                col_cluster = config["colunas_cluster"]["df_medias"]
+                colunas = ["Número do Cluster", "Nome do Cluster"] + [col for col in dados["df_medias"].columns if col != col_cluster and col != "Nome do Cluster" and col != "Número do Cluster"]
+                st.dataframe(dados["df_medias"][colunas], use_container_width=True)
 
     # -----------------------------------
     # 🔹 Seção 4 - Mapa Interativo
@@ -413,7 +487,16 @@ def exibir_analise(tipo):
     # -----------------------------------
     st.header("📋 Diagnóstico dos Clusters")
     if "df_diagnostico" in dados and "colunas_diagnostico" in config:
-        st.dataframe(dados["df_diagnostico"][config["colunas_diagnostico"]], use_container_width=True)
+        # Adicionar coluna de número do cluster ao diagnóstico
+        if "Número do Cluster" not in config["colunas_diagnostico"]:
+            colunas_diagnostico = ["Número do Cluster"] + config["colunas_diagnostico"]
+        else:
+            colunas_diagnostico = config["colunas_diagnostico"]
+        
+        # Verificar quais colunas existem no dataframe
+        colunas_existentes = [col for col in colunas_diagnostico if col in dados["df_diagnostico"].columns]
+        
+        st.dataframe(dados["df_diagnostico"][colunas_existentes], use_container_width=True)
     else:
         st.warning(f"Dados de diagnóstico não disponíveis para {tipo}.")
 
@@ -429,32 +512,54 @@ def exibir_analise(tipo):
     # -----------------------------------
     st.header("📊 Distribuição dos Municípios por Cluster")
     if "df_cidades" in dados:
-        # Definir qual coluna contém o nome do cluster
-        if tipo == "saneamento":
-            nome_coluna = "Perfil do Cluster"
-        else:
-            nome_coluna = "Nome do Cluster"
-            
-        # Criar dataframe de contagem
-        df_contagem = dados["df_cidades"][nome_coluna].value_counts().reset_index()
-        df_contagem.columns = ["Perfil", "Quantidade de Municípios"]
-        
-        # Exibir contagem
-        col1, col2 = st.columns([2, 3])
-        with col1:
-            st.dataframe(df_contagem, use_container_width=True)
-        
-        with col2:
-            # Gráfico de barras horizontal
-            fig = px.bar(df_contagem, 
-                        x="Quantidade de Municípios", 
-                        y="Perfil", 
-                        orientation='h',
-                        color="Perfil",
-                        color_discrete_map=config.get("cor_grafico", None),
-                        title="Distribuição de Municípios por Cluster")
-            fig.update_layout(yaxis={'categoryorder':'total ascending'})
-            st.plotly_chart(fig, use_container_width=True)
+        try:
+            # Definir qual coluna contém o nome do cluster
+            if tipo == "saneamento":
+                nome_coluna = "Perfil do Cluster"
+            else:
+                nome_coluna = "Nome do Cluster"
+                
+            # Verificar se as colunas necessárias existem
+            if nome_coluna in dados["df_cidades"].columns and "Número do Cluster" in dados["df_cidades"].columns:
+                # Criar dataframe de contagem com os números do cluster
+                df_contagem = dados["df_cidades"][[nome_coluna, "Número do Cluster"]].groupby(nome_coluna).first().reset_index()
+                df_contagem["Quantidade de Municípios"] = dados["df_cidades"][nome_coluna].value_counts().reindex(df_contagem[nome_coluna]).values
+                
+                # Ordenar pelo número do cluster
+                df_contagem = df_contagem.sort_values("Número do Cluster")
+                
+                # Renomear coluna
+                df_contagem = df_contagem.rename(columns={nome_coluna: "Perfil"})
+                
+                # Exibir contagem
+                col1, col2 = st.columns([2, 3])
+                with col1:
+                    st.dataframe(df_contagem[["Número do Cluster", "Perfil", "Quantidade de Municípios"]], use_container_width=True)
+                
+                with col2:
+                    # Gráfico de barras horizontal
+                    fig = px.bar(df_contagem, 
+                                x="Quantidade de Municípios", 
+                                y="Perfil", 
+                                orientation='h',
+                                color="Perfil",
+                                color_discrete_map=config.get("cor_grafico", None),
+                                title="Distribuição de Municípios por Cluster")
+                    fig.update_layout(yaxis={'categoryorder':'total ascending'})
+                    st.plotly_chart(fig, use_container_width=True)
+            else:
+                # Fallback se não encontrarmos as colunas esperadas
+                st.warning("Dados completos para distribuição não disponíveis. Exibindo dados básicos:")
+                if nome_coluna in dados["df_cidades"].columns:
+                    contagem_simples = dados["df_cidades"][nome_coluna].value_counts().reset_index()
+                    contagem_simples.columns = ["Perfil", "Quantidade de Municípios"]
+                    st.dataframe(contagem_simples, use_container_width=True)
+                else:
+                    st.dataframe(dados["df_cidades"], use_container_width=True)
+        except Exception as e:
+            st.error(f"Erro ao processar distribuição de municípios: {e}")
+            # Exibir dataframe bruto em caso de erro
+            st.dataframe(dados["df_cidades"], use_container_width=True)
     else:
         st.warning(f"Dados de municípios não disponíveis para {tipo}.")
 
@@ -479,8 +584,13 @@ def exibir_analise(tipo):
             else:
                 filtered_df = dados["df_cidades"]
             
-            # Exibir dados
-            st.dataframe(filtered_df, use_container_width=True)
+            # Garantir que a coluna "Número do Cluster" apareça primeiro, se existir
+            if "Número do Cluster" in filtered_df.columns:
+                col_ordem = ["Número do Cluster"] + [col for col in filtered_df.columns if col != "Número do Cluster"]
+                st.dataframe(filtered_df[col_ordem], use_container_width=True)
+            else:
+                # Se não existir, mostrar todas as colunas na ordem original
+                st.dataframe(filtered_df, use_container_width=True)
         else:
             st.warning("Dados detalhados por município não disponíveis.")
 
