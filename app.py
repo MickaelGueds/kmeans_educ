@@ -207,6 +207,77 @@ CONFIG = {
            - Diagnóstico de pontos fortes e fracos
            - Elaboração de recomendações específicas por perfil
         """
+    },
+    "infancia": {
+    "titulo": "Análise de Infância Municipal por Clusters",
+    "descricao": "Este dashboard apresenta uma análise dos indicadores de infância dos municípios utilizando a técnica de K-Means.",
+    "arquivos": {
+        "medias": "output/medias_clusters_infancia.csv",
+        "diagnostico": "output/diagnostico_clusters_infancia.csv",
+        "cidades": "output/municipios_clusters_infancia.csv",
+        "mapa": "output/mapa_interativo_5clusters_infancia.html"
+    },
+    "colunas_cluster": {
+        "df_medias": "cluster",
+        "df_diagnostico": "cluster", 
+        "df_cidades": "cluster"
+    },
+    "rotulos_cluster": {
+        "0": "Municípios com Equilíbrio Relativo",
+        "1": "Crise na Saúde Infantil",
+        "2": "Desnutrição Crítica com Boa Educação",
+        "3": "Déficit Educacional Crítico",
+        "4": "Vulnerabilidade Nutricional com Educação Precária"
+    },
+    "indicadores": """
+    - **Mortalidade Infantil**: Taxa de mortalidade na infância por habitante (2023).
+    - **Atendimento Ensino Infantil**: Taxa de atendimento do ensino infantil (%).
+    - **Desnutrição Infantil**: Taxa de desnutrição na infância (2024).
+    """,
+    "perfis": """
+    Através da análise estatística, identificamos 5 perfis distintos de municípios com base em seus indicadores relacionados à infância:
+
+    1. **Municípios com Equilíbrio Relativo (71 municípios)**: Baixa mortalidade infantil (0,000135), cobertura educacional intermediária (57,67%), baixa desnutrição infantil (0,25%).
+
+    2. **Crise na Saúde Infantil (23 municípios)**: Alta mortalidade infantil (0,000819), baixa cobertura educacional (53,83%), desnutrição infantil elevada (0,70%).
+
+    3. **Desnutrição Crítica com Boa Educação (28 municípios)**: Baixa mortalidade infantil (0,000118), melhor cobertura educacional (63,03%), desnutrição infantil extremamente alta (1,60%).
+
+    4. **Déficit Educacional Crítico (35 municípios)**: Mortalidade infantil moderada (0,000227), déficit crítico na educação infantil (39,54%), desnutrição moderada (0,39%).
+
+    5. **Vulnerabilidade Nutricional com Educação Precária (67 municípios)**: Mortalidade infantil moderada (0,000181), baixa cobertura educacional (47,61%), desnutrição infantil muito alta (1,19%).
+    """,
+    "colunas_selecionadas": ["Nome do Cluster", "Mortalidade Infantil", 
+                            "Atendimento Ensino Infantil", "Desnutrição Infantil"],
+    "colunas_diagnostico": ["Perfil", "Pontos Fortes", "Pontos Fracos", "Recomendações"],
+    "coluna_busca": "Cidades",
+    "cor_grafico": {
+        "0": "#1f77b4",  # Azul - Equilíbrio Relativo
+        "1": "#d62728",  # Vermelho - Crise na Saúde Infantil
+        "2": "#ff7f0e",  # Laranja - Desnutrição Crítica
+        "3": "#2ca02c",  # Verde - Déficit Educacional
+        "4": "#9467bd"   # Roxo - Vulnerabilidade Nutricional
+    },
+    "metodologia": """
+    ### Processamento dos Dados
+    
+    1. **Pré-processamento**: 
+       - Tratamento de valores problemáticos (#VALUE!, vírgulas em números)
+       - Normalização das taxas por população
+       - Transformação logarítmica para corrigir assimetria
+       - Padronização usando StandardScaler
+       - Tratamento de outliers
+    
+    2. **Clustering**:
+       - Algoritmo K-Means com 5 clusters
+       - Número ideal de clusters determinado pelos métodos do cotovelo e silhueta
+       - Visualização por PCA (Análise de Componentes Principais)
+    
+    3. **Interpretação**:
+       - Análise das médias dos indicadores por cluster
+       - Diagnóstico de pontos fortes e fracos
+       - Elaboração de recomendações específicas para cada grupo
+    """
     }
 }
 
@@ -217,7 +288,7 @@ st.sidebar.title("📊 Navegação")
 # Usando radio ao invés de selectbox para evitar a edição de texto
 pagina = st.sidebar.radio(
     "Escolha o tipo de análise:",
-    ["🏠 Página Inicial", "💧 Saneamento", "🏥 Saúde", "🎓 Educação"]
+    ["🏠 Página Inicial", "💧 Saneamento", "🏥 Saúde", "🎓 Educação", "👶 Infância"]
 )
 
 # -----------------------------------
@@ -646,28 +717,37 @@ if pagina == "🏠 Página Inicial":
     """)
     
     # Exibir mini-cards para navegação alternativa
-    st.markdown("## Escolha uma dimensão para analisar:")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.info("### 💧 Saneamento")
-        if st.button("Ver análise de saneamento", key="btn_saneamento"):
-            # Usar session_state para armazenar a nova página e depois usar rerun
-            st.session_state['pagina'] = "💧 Saneamento"
-            st.rerun()
+    # Exibir mini-cards para navegação alternativa
+st.markdown("## Escolha uma dimensão para analisar:")
+
+# Primeira linha com 2 cards
+col1, col2 = st.columns(2)
+with col1:
+    st.info("### 💧 Saneamento")
+    if st.button("Ver análise de saneamento", key="btn_saneamento"):
+        st.session_state['pagina'] = "💧 Saneamento"
+        st.rerun()
+        
+with col2:
+    st.warning("### 🏥 Saúde")
+    if st.button("Ver análise de saúde", key="btn_saude"):
+        st.session_state['pagina'] = "🏥 Saúde"
+        st.rerun()
+
+# Segunda linha com 2 cards        
+col3, col4 = st.columns(2)
+with col3:
+    st.success("### 🎓 Educação")
+    if st.button("Ver análise de educação", key="btn_educacao"):
+        st.session_state['pagina'] = "🎓 Educação"
+        st.rerun()
+
+with col4:
+    st.info("### 👶 Infância")
+    if st.button("Ver análise de infância", key="btn_infancia"):
+        st.session_state['pagina'] = "👶 Infância"
+        st.rerun()
             
-    with col2:
-        st.warning("### 🏥 Saúde")
-        if st.button("Ver análise de saúde", key="btn_saude"):
-            st.session_state['pagina'] = "🏥 Saúde"
-            st.rerun()
-            
-    with col3:
-        st.success("### 🎓 Educação")
-        if st.button("Ver análise de educação", key="btn_educacao"):
-            st.session_state['pagina'] = "🎓 Educação"
-            st.rerun()
 
 # -----------------------------------
 # 🔹 Verificar se a página deve ser alterada com base na session_state
@@ -688,3 +768,6 @@ elif pagina == "🏥 Saúde":
     
 elif pagina == "🎓 Educação":
     exibir_analise("educacao")
+    
+elif pagina == "👶 Infância":
+    exibir_analise("infancia")

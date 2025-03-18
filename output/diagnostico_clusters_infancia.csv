@@ -1,0 +1,27 @@
+cluster,Taxa_Mortalidade na Infância (nº absoluto) (2023),Taxa_Taxa de atendimento do ensino infantil,Taxa_Desnutrição na Infância (2024),Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,0.00013545733989311332,0.5767605633802817,0.24591549295774648,Municípios com Equilíbrio Relativo,"- Mortalidade Infantil baixa (0.000135)
+- Atendimento Ensino Infantil intermediária (0.58%)
+- Desnutrição Infantil baixa (0.25%)",- Nenhum indicador destaca-se negativamente,"- Manter e documentar as boas práticas em saúde infantil
+- Fortalecer a cobertura educacional para alcançar níveis de excelência
+- Compartilhar estratégias para baixas taxas de desnutrição infantil
+- Monitorar continuamente os indicadores para manter o bom desempenho"
+1,0.0008186850686446956,0.5382608695652173,0.6995652173913044,Crise na Saúde Infantil,- Nenhum indicador destaca-se positivamente,"- Mortalidade Infantil muito elevada (0.000819)
+- Atendimento Ensino Infantil baixa (0.54%)
+- Desnutrição Infantil elevada (0.70%)","- Implementar intervenção emergencial para redução da mortalidade infantil
+- Ampliar urgentemente acesso ao pré-natal e saúde materno-infantil
+- Desenvolver programa de combate à desnutrição infantil
+- Melhorar a cobertura da educação infantil com foco em nutrição escolar"
+2,0.00011791984620849961,0.6303571428571428,1.604642857142857,Desnutrição Crítica com Boa Educação,"- Mortalidade Infantil baixa (0.000118)
+- Atendimento Ensino Infantil alta (0.63%)",- Desnutrição Infantil extremamente alta (1.60%),"- Implementar programa intensivo de combate à desnutrição infantil
+- Utilizar a boa infraestrutura educacional para programas de alimentação escolar
+- Capacitar professores para identificação de casos de desnutrição
+- Manter as boas práticas em saúde infantil e educação"
+3,0.00022655298309748448,0.3954285714285714,0.38571428571428573,Déficit Educacional Crítico,- Nenhum indicador destaca-se positivamente,- Atendimento Ensino Infantil muito baixa (0.40%),"- Expandir urgentemente a rede de educação infantil
+- Implementar programas de busca ativa de crianças fora da escola
+- Desenvolver parcerias para ampliação de creches e pré-escolas
+- Monitorar a saúde infantil para evitar piora dos indicadores"
+4,0.00018052157220052652,0.4761194029850746,1.186268656716418,Vulnerabilidade Nutricional com Educação Precária,- Nenhum indicador destaca-se positivamente,"- Atendimento Ensino Infantil baixa (0.48%)
+- Desnutrição Infantil muito alta (1.19%)","- Implementar abordagem integrada para educação e nutrição infantil
+- Expandir programas de alimentação escolar e acompanhamento nutricional
+- Ampliar a cobertura da educação infantil com foco em áreas vulneráveis
+- Capacitar profissionais de saúde e educação para monitoramento nutricional"
