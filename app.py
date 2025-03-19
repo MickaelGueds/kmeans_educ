@@ -278,7 +278,78 @@ CONFIG = {
        - Diagnóstico de pontos fortes e fracos
        - Elaboração de recomendações específicas para cada grupo
     """
-    }
+    },
+    "ambiente": {
+    "titulo": "Análise Ambiental Municipal por Clusters",
+    "descricao": "Este dashboard apresenta uma análise dos indicadores ambientais dos municípios utilizando a técnica de K-Means.",
+    "arquivos": {
+        "medias": "output/medias_clusters_ambiental.csv",
+        "diagnostico": "output/diagnostico_clusters_ambiental.csv",
+        "cidades": "output/municipios_clusters_ambiental.csv",
+        "mapa": "output/mapa_interativo_5clusters_ambiental.html"
+    },
+    "colunas_cluster": {
+        "df_medias": "cluster",
+        "df_diagnostico": "cluster", 
+        "df_cidades": "cluster"
+    },
+    "rotulos_cluster": {
+        "0": "Vulnerável a Incêndios",
+        "1": "Controle de Incêndios com Desafio em Emissões",
+        "2": "Baixa Emissão com Pressão sobre Caatinga",
+        "3": "Crítico de Desmatamento de Caatinga",
+        "4": "Crítico de Desmatamento de Cerrado"
+    },
+    "indicadores": """
+    - **Desmatamento Caatinga**: Taxa de desmatamento da Caatinga por hectare (2023).
+    - **Desmatamento Cerrado**: Taxa de desmatamento do Cerrado por hectare (2023).
+    - **Áreas Queimadas**: Taxa de áreas queimadas por hectare (2024).
+    - **Emissões de GEE**: Taxa de emissões de gases de efeito estufa por hectare (2023).
+    """,
+    "perfis": """
+    Através da análise estatística, identificamos 5 perfis distintos de municípios com base em seus indicadores ambientais:
+
+    1. **Cluster Vulnerável a Incêndios (39 municípios)**: Baixo desmatamento de Caatinga, alto índice de áreas queimadas (0,35 ha) e elevadas emissões de GEE (2,09 ha).
+
+    2. **Cluster de Controle de Incêndios com Desafio em Emissões (42 municípios)**: Menor índice de áreas queimadas (0,09 ha), mas ainda apresenta emissões de GEE significativas (1,76 ha).
+
+    3. **Cluster de Baixa Emissão com Pressão sobre Caatinga (82 municípios)**: Menor média de emissões de GEE (0,11 ha), desmatamento de Caatinga moderado (0,000017 ha).
+
+    4. **Cluster Crítico de Desmatamento de Caatinga (21 municípios)**: Maior taxa de desmatamento de Caatinga (0,000069 ha) e segunda maior média de áreas queimadas (0,43 ha).
+
+    5. **Cluster Crítico de Desmatamento de Cerrado (40 municípios)**: Taxa elevada de desmatamento de Cerrado (0,000114 ha), 11x maior que a média dos outros clusters.
+    """,
+    "colunas_selecionadas": ["Nome do Cluster", "Desmatamento Caatinga", "Desmatamento Cerrado", 
+                          "Áreas Queimadas", "Emissões de GEE"],
+    "colunas_diagnostico": ["Perfil", "Pontos Fortes", "Pontos Fracos", "Recomendações"],
+    "coluna_busca": "Cidades",
+    "cor_grafico": {
+        "0": "#FF9E00",  # Laranja - Vulnerável a Incêndios
+        "1": "#4DAF4A",  # Verde - Controle de Incêndios
+        "2": "#377EB8",  # Azul - Baixa Emissão
+        "3": "#E41A1C",  # Vermelho - Crítico Caatinga
+        "4": "#984EA3"   # Roxo - Crítico Cerrado
+    },
+    "metodologia": """
+    ### Processamento dos Dados
+    
+    1. **Pré-processamento**: 
+       - Tratamento de valores ausentes
+       - Normalização das taxas por hectare
+       - Padronização usando StandardScaler
+       - Tratamento de outliers
+    
+    2. **Clustering**:
+       - Algoritmo K-Means com 5 clusters
+       - Número ideal de clusters determinado pelos métodos do cotovelo e silhueta
+       - Visualização por PCA (Análise de Componentes Principais)
+    
+    3. **Interpretação**:
+       - Análise das médias dos indicadores por cluster
+       - Diagnóstico de pontos fortes e fracos
+       - Elaboração de recomendações específicas para cada perfil ambiental
+    """
+}
 }
 
 # -----------------------------------
@@ -288,7 +359,7 @@ st.sidebar.title("📊 Navegação")
 # Usando radio ao invés de selectbox para evitar a edição de texto
 pagina = st.sidebar.radio(
     "Escolha o tipo de análise:",
-    ["🏠 Página Inicial", "💧 Saneamento", "🏥 Saúde", "🎓 Educação", "👶 Infância"]
+    ["🏠 Página Inicial", "💧 Saneamento", "🏥 Saúde", "🎓 Educação", "👶 Infância", "🌳 Meio Ambiente"]
 )
 
 # -----------------------------------
@@ -697,6 +768,12 @@ if pagina == "🏠 Página Inicial":
     ### 🎓 **Educação** 
     Diagnóstico das condições educacionais, considerando fatores como distorção idade-série, infraestrutura escolar, qualidade do ensino e alfabetização.
     
+    ### 👶 **Infância**
+    Avaliação dos indicadores relacionados à primeira infância, incluindo mortalidade infantil, atendimento educacional infantil e índices de desnutrição.
+
+    ### 🌳 **Meio Ambiente**
+    Análise de indicadores ambientais como desmatamento de Caatinga e Cerrado, áreas queimadas e emissões de gases de efeito estufa.
+    
     ## Metodologia
     
     Todas as análises utilizam a técnica de clustering K-means para identificar grupos de municípios com características semelhantes. Este agrupamento permite:
@@ -747,6 +824,13 @@ with col4:
     if st.button("Ver análise de infância", key="btn_infancia"):
         st.session_state['pagina'] = "👶 Infância"
         st.rerun()
+# Adicionar uma nova linha com 1 card para Meio Ambiente
+col5, col6 = st.columns(2)
+with col5:
+    st.success("### 🌳 Meio Ambiente")
+    if st.button("Ver análise de meio ambiente", key="btn_ambiente"):
+        st.session_state['pagina'] = "🌳 Meio Ambiente"
+        st.rerun()
             
 
 # -----------------------------------
@@ -771,3 +855,6 @@ elif pagina == "🎓 Educação":
     
 elif pagina == "👶 Infância":
     exibir_analise("infancia")
+
+elif pagina == "🌳 Meio Ambiente":
+    exibir_analise("ambiente")

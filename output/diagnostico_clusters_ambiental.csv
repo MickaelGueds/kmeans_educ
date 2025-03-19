@@ -1,0 +1,31 @@
+cluster,Desmatamento Caatinga por ha (2023),Desmatamento Cerrado por ha (2023),Áreas Queimadas por ha (2024),Emissões de GEE por ha (2023),Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,3.533135236163663e-06,9.442876684561538e-06,0.35848934691456474,2.0951003539920654,Cluster Vulnerável a Incêndios,"- Desmatamento Caatinga baixo (0.00000353)
+- Desmatamento Cerrado baixo (0.00000944)","- Áreas Queimadas em níveis altos (0.358489)
+- Emissões de GEE muito elevadas (2.095100)","- Implementar programas de prevenção e controle de incêndios
+- Desenvolver políticas de redução de emissões de gases de efeito estufa
+- Ampliar sistemas de monitoramento precoce de queimadas
+- Incentivar práticas agropecuárias de baixa emissão de carbono"
+1,2.445686596230528e-06,8.957648081440937e-06,0.09631646741558858,1.7641232820981092,Cluster de Controle de Incêndios com Desafio em Emissões,"- Desmatamento Caatinga baixo (0.00000245)
+- Desmatamento Cerrado baixo (0.00000896)
+- Áreas Queimadas bem controladas (0.096316)",- Emissões de GEE significativas (1.764123),"- Documentar e compartilhar práticas de sucesso no controle de incêndios
+- Implementar projetos de redução de emissões de GEE
+- Desenvolver mecanismos de captura e compensação de carbono
+- Replicar estratégias bem-sucedidas de prevenção de queimadas"
+2,1.6719068174196286e-05,9.548451054158212e-06,0.17883207890883265,0.1136892344484878,Cluster de Baixa Emissão com Pressão sobre Caatinga,"- Desmatamento Cerrado baixo (0.00000955)
+- Áreas Queimadas moderadas (0.178832)
+- Emissões de GEE baixas (0.113689)",- Desmatamento Caatinga moderado (0.00001672),"- Fortalecer iniciativas de conservação da Caatinga
+- Manter as práticas de baixa emissão de GEE
+- Implementar programas de reflorestamento da Caatinga nativa
+- Desenvolver planos de manejo sustentável para o bioma Caatinga"
+3,6.938139981363574e-05,1.0944944504376524e-05,0.4318778601414704,1.5167036019007483,Cluster Crítico de Desmatamento de Caatinga,"- Desmatamento Cerrado baixo (0.00001094)
+- Emissões de GEE moderadas (1.516704)","- Desmatamento Caatinga crítico (0.00006938)
+- Áreas Queimadas em níveis críticos (0.431878)","- Implementar medidas urgentes de proteção e conservação da Caatinga
+- Fiscalizar e coibir o desmatamento ilegal com maior rigor
+- Criar áreas de proteção ambiental no bioma Caatinga
+- Desenvolver programas de reflorestamento e recuperação de áreas degradadas"
+4,1.708918707704431e-05,0.00011363256717525404,0.24340832873970064,1.5141430966895295,Cluster Crítico de Desmatamento de Cerrado,- Emissões de GEE moderadas (1.514143),"- Desmatamento Caatinga moderado (0.00001709)
+- Desmatamento Cerrado extremamente elevado (0.00011363)
+- Áreas Queimadas em níveis consideráveis (0.243408)","- Implementar medidas urgentes de proteção e conservação do Cerrado
+- Fiscalizar e monitorar o uso do solo em áreas de Cerrado
+- Incentivar práticas agropecuárias que reduzam a pressão sobre o bioma
+- Fortalecer unidades de conservação em áreas de Cerrado"
