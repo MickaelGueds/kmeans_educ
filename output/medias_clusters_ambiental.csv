@@ -1,6 +1,6 @@
-cluster,quantidade_municipios,perfil,Desmatamento Caatinga,Desmatamento Cerrado,Áreas Queimadas,Emissões de GEE
-0,39,Cluster Vulnerável a Incêndios,0.00000353,0.00000944,0.358489,2.095100
-1,42,Cluster de Controle de Incêndios com Desafio em Emissões,0.00000245,0.00000896,0.096316,1.764123
-2,82,Cluster de Baixa Emissão com Pressão sobre Caatinga,0.00001672,0.00000955,0.178832,0.113689
-3,21,Cluster Crítico de Desmatamento de Caatinga,0.00006938,0.00001094,0.431878,1.516704
-4,40,Cluster Crítico de Desmatamento de Cerrado,0.00001709,0.00011363,0.243408,1.514143
+cluster,quantidade_municipios,perfil,Desmatamento Caatinga,Desmatamento Cerrado,Áreas Queimadas,Emissões de GEE (ton/ano)
+0,43,Cluster Vulnerável a Incêndios e Altas Emissões,0.00000520,0.00000702,0.359884,149156.0
+1,71,Cluster Moderado com Emissões Expressivas,0.00000905,0.00000890,0.120632,128469.1
+2,42,Cluster com Pressão sobre o Cerrado,0.00001648,0.00011154,0.241432,58932.7
+3,21,Cluster Crítico de Desmatamento de Caatinga e Incêndios,0.00006938,0.00001094,0.431878,99839.2
+4,47,Cluster Zero Emissões com Déficit de Monitoramento,0.00001566,0.00000967,0.175467,0.0
