@@ -1,0 +1,38 @@
+cluster,Segurança pessoal (Taxa de MVI a cada 100 mil hab) (2024),Violência Sexual por 100.000 habitantes (2022) (segundo município de residência),Mortalidade no trânsito - taxa por 100 mil hab (2023),Morbidade no Trânsito - taxa por 100 mil hab (2023),Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,0.16717673191536422,0.11044948679999997,7.452316174139444,226.09685719770576,Alta Morbidade e Baixa Mortalidade no Trânsito - Muitos acidentes com ferimentos não fatais,"- Homicídios (MVI) taxa moderada (0.1672)
+- Violência Sexual taxa baixa (0.1104)
+- Mortalidade no Trânsito taxa muito baixa (7.45)",- Morbidade no Trânsito taxa muito alta (226.10),"- Implementar políticas de fiscalização preventiva em áreas de alto risco de acidentes
+- Investir em engenharia de tráfego para reduzir a ocorrência de acidentes não fatais
+- Desenvolver campanhas educativas sobre direção defensiva e segurança no trânsito
+- Melhorar a sinalização urbana em pontos críticos de acidentes
+- Manter as estratégias que resultam em baixa mortalidade no trânsito"
+1,0.030344410681415825,0.14766004225609755,43.353706285300056,203.32048015173194,Alta Mortalidade e Morbidade no Trânsito - Crise generalizada de segurança viária,- Homicídios (MVI) taxa baixa (0.0303),"- Violência Sexual taxa moderada (0.1477)
+- Mortalidade no Trânsito taxa muito alta (43.35)
+- Morbidade no Trânsito taxa muito alta (203.32)","- Implementar fiscalização rigorosa de velocidade e embriaguez ao volante
+- Realizar intervenções em pontos críticos com alto índice de acidentes graves
+- Fortalecer equipes de atendimento pré-hospitalar para reduzir letalidade
+- Promover campanhas intensivas de educação para o trânsito
+- Desenvolver plano integrado de segurança viária com metas de redução de acidentes"
+2,0.038589227978365996,0.22948187285714283,40.38652692585707,9.631443624996365,Alta Mortalidade e Baixa Morbidade no Trânsito - Acidentes tendem a ser fatais,"- Homicídios (MVI) taxa baixa (0.0386)
+- Morbidade no Trânsito taxa muito baixa (9.63)","- Violência Sexual taxa elevada (0.2295)
+- Mortalidade no Trânsito taxa muito alta (40.39)","- Analisar causas da alta letalidade em acidentes de trânsito
+- Melhorar tempo de resposta a emergências em acidentes
+- Implementar programas específicos para prevenir acidentes com maior letalidade
+- Promover campanhas contra violência sexual, considerando a taxa elevada
+- Revisar sistema de registro de acidentes não fatais para garantir notificação adequada"
+3,0.14431031804797445,0.5915836758333334,24.860103252742835,232.93858301274088,Crítico em Violência Sexual - Taxa extremamente alta de violência sexual,- Nenhum indicador destaca-se positivamente,"- Homicídios (MVI) taxa moderada (0.1443)
+- Violência Sexual taxa extremamente alta (0.5916)
+- Mortalidade no Trânsito taxa moderada (24.86)
+- Morbidade no Trânsito taxa muito alta (232.94)","- Implementar programas emergenciais de proteção a mulheres e crianças
+- Criar ou fortalecer delegacias especializadas no atendimento a vítimas
+- Capacitar profissionais de saúde e segurança para identificação e manejo de casos
+- Desenvolver campanhas específicas de prevenção à violência sexual
+- Estabelecer rede de apoio e acolhimento às vítimas"
+4,0.3404360994077615,0.14459365653846154,50.18316751309679,149.31385089432362,Alto em Homicídios (MVI) e Mortalidade no Trânsito - Maior gravidade de violência,- Nenhum indicador destaca-se positivamente,"- Homicídios (MVI) taxa extremamente alta (0.3404)
+- Violência Sexual taxa moderada (0.1446)
+- Mortalidade no Trânsito taxa extremamente alta (50.18)
+- Morbidade no Trânsito taxa moderada (149.31)","- Implementar patrulhamento intensivo em áreas de alto risco de homicídios
+- Desenvolver programas integrados de prevenção à violência urbana
+- Fortalecer a investigação criminal para aumentar a resolução de casos
+- Implementar fiscalização rigorosa de trânsito para reduzir mortalidade viária
+- Criar projetos sociais em áreas vulneráveis para prevenção da violência"

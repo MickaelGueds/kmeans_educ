@@ -349,6 +349,79 @@ CONFIG = {
        - Diagnóstico de pontos fortes e fracos
        - Elaboração de recomendações específicas para cada perfil ambiental
     """
+},
+    # 1. Adicionar configuração de segurança ao dicionário CONFIG:
+"seguranca": {
+    "titulo": "Análise de Segurança Municipal por Clusters",
+    "descricao": "Este dashboard apresenta uma análise dos indicadores de segurança pública dos municípios utilizando a técnica de K-Means.",
+    "arquivos": {
+        "medias": "output/medias_clusters_seguranca.csv",
+        "diagnostico": "output/diagnostico_clusters_seguranca.csv",
+        "cidades": "output/municipios_clusters_seguranca.csv",
+        "mapa": "output/mapa_interativo_5clusters_seguranca.html"
+    },
+    "colunas_cluster": {
+        "df_medias": "cluster",
+        "df_diagnostico": "cluster", 
+        "df_cidades": "cluster"
+    },
+    "rotulos_cluster": {
+        "0": "Alta Morbidade e Baixa Mortalidade no Trânsito",
+        "1": "Alta Mortalidade e Morbidade no Trânsito",
+        "2": "Alta Mortalidade e Baixa Morbidade no Trânsito",
+        "3": "Crítico em Violência Sexual",
+        "4": "Alto em Homicídios (MVI) e Mortalidade no Trânsito"
+    },
+    "indicadores": """
+    - **Homicídios (MVI)**: Taxa de Mortes Violentas Intencionais por 100 mil habitantes (2024).
+    - **Violência Sexual**: Taxa de violência sexual por 100 mil habitantes (2022).
+    - **Mortalidade no Trânsito**: Taxa de mortalidade no trânsito por 100 mil habitantes (2023).
+    - **Morbidade no Trânsito**: Taxa de morbidade no trânsito por 100 mil habitantes (2023).
+    """,
+    "perfis": """
+    Através da análise estatística, identificamos 5 perfis distintos de municípios com base em seus indicadores de segurança pública:
+
+    1. **Alta Morbidade e Baixa Mortalidade no Trânsito (25 municípios)**: Taxa média de homicídios (MVI: 0,17), baixa violência sexual (0,11), baixíssima mortalidade no trânsito (7,45), mas alta morbidade no trânsito (226,10). Muitos acidentes leves/moderados.
+
+    2. **Alta Mortalidade e Morbidade no Trânsito (82 municípios)**: Baixa taxa de homicídios (MVI: 0,03), violência sexual moderada (0,15), alta mortalidade (43,35) e alta morbidade no trânsito (203,32). Crise generalizada de segurança viária.
+
+    3. **Alta Mortalidade e Baixa Morbidade no Trânsito (42 municípios)**: Baixa taxa de homicídios (MVI: 0,04), violência sexual elevada (0,23), alta mortalidade (40,39) mas baixíssima morbidade no trânsito (9,63). Acidentes tendem a ser fatais.
+
+    4. **Crítico em Violência Sexual (36 municípios)**: Taxa moderada de homicídios (MVI: 0,14), violência sexual extremamente alta (0,59), mortalidade moderada (24,86) e alta morbidade no trânsito (232,94). Prioridade para violência sexual.
+
+    5. **Alto em Homicídios (MVI) e Mortalidade no Trânsito (39 municípios)**: Taxa extrema de homicídios (MVI: 0,34), violência sexual moderada (0,14), altíssima mortalidade no trânsito (50,18) e morbidade moderada (149,31). Pior cenário geral de violência.
+    """,
+    "colunas_selecionadas": ["Nome do Cluster", "Homicídios (MVI)", "Violência Sexual", 
+                            "Mortalidade no Trânsito", "Morbidade no Trânsito"],
+    "colunas_diagnostico": ["Perfil", "Pontos Fortes", "Pontos Fracos", "Recomendações"],
+    "coluna_busca": "Cidades",
+    "cor_grafico": {
+        "0": "#1f77b4",  # Azul
+        "1": "#ff7f0e",  # Laranja
+        "2": "#2ca02c",  # Verde
+        "3": "#d62728",  # Vermelho
+        "4": "#9467bd"   # Roxo
+    },
+    "metodologia": """
+    ### Processamento dos Dados
+    
+    1. **Pré-processamento**: 
+       - Tratamento de valores zeros (potencialmente dados faltantes)
+       - Substituição de zeros pelo menor valor não-zero ou pela média
+       - Transformação logarítmica para reduzir assimetria
+       - Padronização usando StandardScaler
+       - Detecção e tratamento de outliers usando IQR
+    
+    2. **Clustering**:
+       - Algoritmo K-Means com 5 clusters
+       - Número ideal de clusters determinado pelos métodos do cotovelo e silhueta
+       - Visualização por PCA (Análise de Componentes Principais)
+    
+    3. **Interpretação**:
+       - Análise das médias dos indicadores por cluster
+       - Diagnóstico de pontos fortes e fracos
+       - Elaboração de recomendações específicas para cada perfil
+    """
 }
 }
 
@@ -357,9 +430,10 @@ CONFIG = {
 # -----------------------------------
 st.sidebar.title("📊 Navegação")
 # Usando radio ao invés de selectbox para evitar a edição de texto
+# Altere essa parte no código (aproximadamente linha 483):
 pagina = st.sidebar.radio(
     "Escolha o tipo de análise:",
-    ["🏠 Página Inicial", "💧 Saneamento", "🏥 Saúde", "🎓 Educação", "👶 Infância", "🌳 Meio Ambiente"]
+    ["🏠 Página Inicial", "💧 Saneamento", "🏥 Saúde", "🎓 Educação", "👶 Infância", "🌳 Meio Ambiente", "🔒 Segurança"]
 )
 
 # -----------------------------------
@@ -687,7 +761,7 @@ def exibir_analise(tipo):
                                 color="Perfil",
                                 color_discrete_map=config.get("cor_grafico", None),
                                 title="Distribuição de Municípios por Cluster")
-                    fig.update_layout(yaxis={'categoryorder':'total ascending'})
+                    fig.update_layout(yaxis={'categoryorder':'total ascending'},showlegend=False)
                     st.plotly_chart(fig, use_container_width=True)
             else:
                 # Fallback se não encontrarmos as colunas esperadas
@@ -774,6 +848,9 @@ if pagina == "🏠 Página Inicial":
     ### 🌳 **Meio Ambiente**
     Análise de indicadores ambientais como desmatamento de Caatinga e Cerrado, áreas queimadas e emissões de gases de efeito estufa.
     
+    
+    ### 🔒 **Segurança**
+    Análise dos indicadores de segurança pública, incluindo homicídios (MVI), violência sexual, mortalidade e morbidade no trânsito.
     ## Metodologia
     
     Todas as análises utilizam a técnica de clustering K-means para identificar grupos de municípios com características semelhantes. Este agrupamento permite:
@@ -831,6 +908,12 @@ with col5:
     if st.button("Ver análise de meio ambiente", key="btn_ambiente"):
         st.session_state['pagina'] = "🌳 Meio Ambiente"
         st.rerun()
+# Modifique a parte do código que contém os cards (aproximadamente linha 762):
+with col6:
+    st.error("### 🔒 Segurança")
+    if st.button("Ver análise de segurança", key="btn_seguranca"):
+        st.session_state['pagina'] = "🔒 Segurança"
+        st.rerun()
             
 
 # -----------------------------------
@@ -858,3 +941,7 @@ elif pagina == "👶 Infância":
 
 elif pagina == "🌳 Meio Ambiente":
     exibir_analise("ambiente")
+    
+    # Adicione essa condição ao final, junto com os outros elif (aproximadamente linha 789):
+elif pagina == "🔒 Segurança":
+    exibir_analise("seguranca")
