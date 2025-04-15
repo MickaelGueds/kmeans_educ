@@ -1,6 +1,5 @@
-cluster,quantidade_municipios,perfil,Mortalidade Materna,Mortalidade Infantil,Mortalidade Precoce,Internações Sensíveis (%)
-0,65,"Municípios com baixa vulnerabilidade geral, sem mortalidade materna e menor taxa de internações APS",0.00,0.000122,0.000104,19.72%
-1,40,Municípios com maior taxa de mortalidade precoce e internações APS moderadas,0.07,0.000175,0.000515,24.54%
-2,27,Municípios com maior taxa de mortalidade infantil e internações APS moderadas,0.00,0.000773,0.000120,24.35%
-3,11,Municípios em situação crítica de mortalidade materna (extremamente alta),8.83,0.000179,0.000308,21.77%
-4,81,Municípios com maior taxa de internações por condições sensíveis à APS,0.00,0.000173,0.000136,32.34%
+cluster,mortalidade_prematura,cobertura_penta,mortalidade_infantil,exames_especializados
+0,4.194767,0.995714,0.966102,305.949153
+1,2.167893,0.926209,0.732673,375.504950
+2,2.436845,1.282375,0.651163,322.000000
+3,2.688199,0.960187,5.950000,5391.800000

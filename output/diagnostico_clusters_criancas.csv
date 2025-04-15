@@ -1,0 +1,23 @@
+cluster,Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,Cluster 1: Alta Mortalidade Infantil (5.86),- Nenhum indicador destaca-se positivamente,"- Mortalidade Infantil alarmante (5.86)
+- Taxa de Alfabetização baixa (53.64%)
+- Atendimento Educacional Infantil em situação crítica (60.97%)","- URGENTE: Implementar programa de redução da mortalidade infantil
+- Fortalecer rede de assistência pré-natal e neonatal
+- Criar sistema de monitoramento intensivo de gestantes e recém-nascidos
+- Capacitar agentes de saúde para identificação precoce de riscos à saúde infantil"
+1,Cluster 2: Baixa Cobertura Vacinal (76.55%),- Mortalidade Infantil baixa (0.66),"- Cobertura Vacinal BCG crítica (76.55%)
+- Taxa de Alfabetização muito baixa (48.50%)","- Priorizar campanhas intensivas de vacinação BCG
+- Implementar sistema de busca ativa para crianças não vacinadas
+- Desenvolver programas de alfabetização com foco em educação de pais e responsáveis
+- Ampliar acesso a materiais educativos sobre vacinação e saúde infantil"
+2,Cluster 3: Melhor Alfabetização (87.45%),"- Taxa de Alfabetização excelente (87.45%)
+- Atendimento Educacional Infantil elevado (78.87%)
+- Mortalidade Infantil muito baixa (0.56)",- Cobertura Vacinal BCG insuficiente (78.21%),"- Elevar cobertura vacinal BCG através de ações direcionadas de imunização
+- Compartilhar boas práticas educacionais com outros clusters
+- Manter os bons índices de alfabetização e atendimento educacional infantil
+- Implementar sistema de alertas para reforços vacinais"
+3,Cluster 4: Alfabetização Deficiente (52.14%),- Cobertura Vacinal BCG excelente (110.48%),"- Taxa de Alfabetização muito deficiente (52.14%)
+- Mortalidade Infantil moderada (1.08)","- Desenvolver programas intensivos de alfabetização
+- Ampliar acesso à educação infantil para melhorar índices futuros de alfabetização
+- Investigar causas da mortalidade infantil moderada apesar da boa cobertura vacinal
+- Fortalecer integração entre serviços de saúde e educação"

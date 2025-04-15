@@ -1,0 +1,4 @@
+cluster,quantidade_registros,perfil,IDEB Anos Iniciais,IDEB Anos Finais,Taxa de Evasão Anos Iniciais,IDEB Média,SAEPI Média
+0,48,"Cluster 1: Baixo Desempenho Educacional - Municípios com baixo desempenho educacional (IDEB AI: 4.61, IDEB AF: 4.00) e alta taxa de evasão escolar (2.47%).",4.61,4.00,2.47%,4.30,579.57
+1,86,"Cluster 2: Excelência Educacional - Municípios com excelência educacional em todos os indicadores: IDEB AI (6.15), IDEB AF (5.12), SAEPI Português (690.37), SAEPI Matemática (586.05).",6.15,5.12,1.13%,5.63,638.21
+2,90,"Cluster 3: Desempenho Educacional Intermediário - Municípios com desempenho educacional intermediário (IDEB AI: 5.15, IDEB AF: 4.57) e baixa evasão escolar (1.17%).",5.15,4.57,1.17%,4.86,556.21

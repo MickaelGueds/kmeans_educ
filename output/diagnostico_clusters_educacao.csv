@@ -1,0 +1,22 @@
+cluster,Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,"Cluster 1: Baixo Desempenho Educacional - Municípios com baixo desempenho educacional (IDEB AI: 4.61, IDEB AF: 4.00) e alta taxa de evasão escolar (2.47%).",- Nenhum indicador destaca-se positivamente,"- IDEB Anos Iniciais baixo (4.61)
+- IDEB Anos Finais baixo (4.00)
+- Taxa de Evasão Anos Iniciais elevada (2.47%)
+- IDEB Média em nível crítico (4.30)","- Implementar programas de redução da evasão escolar
+- Reforçar capacitação docente em metodologias ativas de ensino
+- Desenvolver projetos de apoio e reforço escolar focados em matemática
+- Criar sistema de monitoramento do desempenho escolar com intervenções pedagógicas"
+1,"Cluster 2: Excelência Educacional - Municípios com excelência educacional em todos os indicadores: IDEB AI (6.15), IDEB AF (5.12), SAEPI Português (690.37), SAEPI Matemática (586.05).","- IDEB Anos Iniciais excelente (6.15)
+- IDEB Anos Finais excelente (5.12)
+- Taxa de Evasão Anos Iniciais muito baixa (1.13%)
+- IDEB Média em nível ótimo (5.63)
+- SAEPI Média em nível ótimo (638.21)",- Nenhum indicador destaca-se negativamente,"- Documentar e compartilhar práticas de sucesso pedagógico com outros municípios
+- Manter investimentos na educação e formação continuada de professores
+- Desenvolver programas para reduzir possíveis desigualdades entre escolas do município
+- Estabelecer programas de tutoria entre escolas de alto e baixo desempenho"
+2,"Cluster 3: Desempenho Educacional Intermediário - Municípios com desempenho educacional intermediário (IDEB AI: 5.15, IDEB AF: 4.57) e baixa evasão escolar (1.17%).","- IDEB Anos Iniciais intermediário (5.15)
+- IDEB Anos Finais superior ao Cluster 1 (4.57)
+- Taxa de Evasão Anos Iniciais baixa (1.17%)",- SAEPI Média em nível crítico (556.21),"- Investir em programas de melhoria do ensino de português e matemática
+- Manter estratégias de contenção da evasão escolar
+- Aprimorar metodologias pedagógicas com foco em resultados
+- Estabelecer metas progressivas de melhoria do IDEB e SAEPI"

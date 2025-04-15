@@ -1,25 +1,13 @@
-cluster,Mortalidade Materna (nº absoluto) (2023),Taxa_Mortalidade na Infância (nº absoluto) (2023),Taxa_Mortalidade Precoce (nº absoluto) (2023),Taxa_Percentual de internações por condições sensíveis à atenção primária (2024),Perfil,Pontos Fortes,Pontos Fracos,Recomendações
-0,0.0,0.00012178883806659649,0.00010446769749549921,19.72476923076923,"Municípios com baixa vulnerabilidade geral, sem mortalidade materna e menor taxa de internações APS","- Mortalidade Materna inexistente (0.00)
-- Mortalidade Infantil baixa (0.000122)
-- Mortalidade Precoce baixa (0.000104)
-- Internações Sensíveis (%) baixa (19.72%)",- Nenhum indicador destaca-se negativamente,"- Manter e documentar as boas práticas em saúde materna
-- Servir como modelo para outros municípios em prevenção da mortalidade
-- Compartilhar estratégias para baixas taxas de internações por condições sensíveis à APS
-- Monitorar continuamente os indicadores para manter o bom desempenho"
-1,0.0700157114025,0.00017501557990035976,0.00051466947227101,24.5365,Municípios com maior taxa de mortalidade precoce e internações APS moderadas,- Mortalidade Materna baixa (0.07),- Mortalidade Precoce muito alta (0.000515),"- Implementar programas de prevenção e controle de doenças crônicas não transmissíveis
-- Focar em estratégias para redução da mortalidade precoce (30-69 anos)
-- Ampliar ações de prevenção e diagnóstico precoce de câncer e doenças cardiovasculares
-- Manter as boas práticas em saúde materna"
-2,0.0,0.0007726060050275925,0.00012015421049957487,24.348888888888887,Municípios com maior taxa de mortalidade infantil e internações APS moderadas,- Mortalidade Materna inexistente (0.00),- Mortalidade Infantil muito elevada (0.000773),"- Fortalecer programas de atenção à saúde infantil e neonatal
-- Melhorar a qualidade do pré-natal e acompanhamento pediátrico
-- Implementar vigilância ativa de casos de risco para mortalidade infantil
-- Capacitar profissionais em atendimento de emergências pediátricas"
-3,8.828332065363636,0.0001786985023271091,0.00030806295867966365,21.773636363636363,Municípios em situação crítica de mortalidade materna (extremamente alta),- Internações Sensíveis (%) moderada (21.77%),"- Mortalidade Materna extremamente alta (8.83)
-- Mortalidade Precoce moderada-alta (0.000308)","- Intervenção urgente na atenção à saúde materna
-- Auditar casos de óbitos maternos para entender causas evitáveis
-- Implementar protocolos rigorosos de emergência obstétrica
-- Capacitar equipes em saúde materna e desenvolver rede de referência"
-4,0.0,0.00017321407184244328,0.00013609138875192572,32.33530864197531,Municípios com maior taxa de internações por condições sensíveis à APS,- Mortalidade Materna inexistente (0.00),- Internações Sensíveis (%) muito alta (32.34%),"- Revisar e fortalecer a efetividade da atenção primária à saúde
-- Implementar protocolos para manejo de condições sensíveis à APS
-- Capacitar equipes de APS para melhor resolutividade
-- Estabelecer programas de monitoramento de pacientes crônicos para evitar internações"
+cluster,Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,"Cluster 1: Alta Mortalidade Prematura - Municípios com alta mortalidade prematura (4.19), cobertura vacinal média (99.5%) e baixo acesso a exames especializados (305.95).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Implementar programas focados na redução da mortalidade prematura
+- Melhorar acesso a atendimentos especializados
+- Investigar fatores de risco específicos para mortalidade prematura na região"
+1,"Cluster 2: Baixa Cobertura Vacinal - Municípios com indicadores equilibrados, baixa mortalidade prematura (2.17) e infantil (0.73), e acesso moderado a exames (375.50).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Aprimorar programas de vacinação para atingir cobertura acima de 100%
+- Preservar os baixos índices de mortalidade prematura e infantil
+- Aumentar acesso a exames especializados"
+2,"Cluster 3: Excelente Cobertura Vacinal - Municípios com excelente cobertura vacinal (128.2%) e baixa mortalidade infantil (0.65), mas acesso limitado a exames especializados (322.00).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Expandir acesso a exames especializados
+- Manter a excelente cobertura vacinal como modelo para outros clusters
+- Investigar causas da mortalidade prematura moderada"
+3,Cluster 4: Alta Mortalidade Infantil - Municípios com alto acesso a exames especializados (5391.80) mas altíssima mortalidade infantil (5.95).,- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Investigar urgentemente a disparidade entre alto acesso a serviços e alta mortalidade infantil
+- Avaliar qualidade do atendimento pediátrico e neonatal
+- Revisar protocolos de atendimento infantil nos municípios do cluster"

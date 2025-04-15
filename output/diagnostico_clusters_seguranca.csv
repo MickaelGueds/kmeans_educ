@@ -1,0 +1,21 @@
+cluster,Perfil,Pontos Fortes,Pontos Fracos,Recomendações
+0,"Cluster 1: Baixos Índices Criminais - Municípios pequenos (6.306 hab) com baixíssima criminalidade: taxa de homicídio (0.33), violência sexual (0.002), baixa mortalidade no trânsito (-0.18) e roubo de veículos (0.17).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Manter e aprimorar estratégias de prevenção criminal de baixo custo
+- Desenvolver programas de fortalecimento comunitário
+- Investir em infraestrutura básica de segurança
+- Criar sistemas de monitoramento e registro de ocorrências"
+1,"Cluster 2: Alto Roubo de Celulares - Municípios de porte médio (36.463 hab) com alto roubo de celulares (2.93%), taxa de homicídio elevada (1.00), violência sexual alta (0.68), mortalidade no trânsito (2.23) e roubo de veículos (2.59).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Implementar estratégias específicas contra roubo de celulares
+- Desenvolver programas de segurança pública focados em áreas de médio porte
+- Criar campanhas de conscientização sobre prevenção de crimes
+- Aumentar o policiamento preventivo"
+2,"Cluster 3: Alta Mortalidade no Trânsito - Municípios maiores (44.746 hab) com gravíssimos problemas de segurança no trânsito (6.00), alta taxa de homicídio (0.96) e elevado roubo de celulares (2.23).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Desenvolver programa emergencial de segurança no trânsito
+- Intensificar fiscalização e educação viária
+- Criar estratégias específicas para redução de acidentes
+- Implementar políticas de mobilidade urbana mais seguras"
+3,"Cluster 4: Alto Roubo de Veículos - Municípios pequenos (6.896 hab) com alto índice de roubo de veículos (1.71%), taxa de homicídio significativa (0.84) e violência sexual preocupante (0.22).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Fortalecer policiamento contra roubo de veículos
+- Desenvolver sistema de monitoramento e rastreamento veicular
+- Criar programas de prevenção à violência sexual
+- Implementar políticas de segurança pública localizadas"
+4,"Cluster 5: Mortalidade no Trânsito Moderada - Municípios médios (10.199 hab) com mortalidade no trânsito moderada (1.11), índices de criminalidade mais controlados com taxa de homicídio (0.58) e baixo roubo de celulares (0.12).",- Nenhum indicador destaca-se positivamente,- Nenhum indicador destaca-se negativamente,"- Manter e aprimorar políticas de segurança pública
+- Investir em programas preventivos de segurança no trânsito
+- Desenvolver ações de educação viária
+- Implementar sistema de monitoramento e registro de ocorrências"

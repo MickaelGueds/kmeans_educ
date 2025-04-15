@@ -1,0 +1,5 @@
+cluster,quantidade_municipios,perfil_resumido,Mortalidade Infantil,Taxa de Alfabetização,Cobertura Vacinal BCG,Atendimento Educacional Infantil
+1,22,Cluster 1: Alta Mortalidade Infantil (5.86),5.86,53.64%,89.49%,60.97%
+2,92,Cluster 2: Baixa Cobertura Vacinal (76.55%),0.66,48.50%,76.55%,63.02%
+3,57,Cluster 3: Melhor Alfabetização (87.45%),0.56,87.45%,78.21%,78.87%
+4,52,Cluster 4: Alfabetização Deficiente (52.14%),1.08,52.14%,110.48%,67.41%
