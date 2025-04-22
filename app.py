@@ -231,23 +231,36 @@ CONFIG = {
             "2": "Desempenho Educacional Intermediário"
         },
         "indicadores": """
-        - **IDEB Anos Iniciais**: Índice de Desenvolvimento da Educação Básica para os anos iniciais do ensino fundamental.
-        - **IDEB Anos Finais**: Índice de Desenvolvimento da Educação Básica para os anos finais do ensino fundamental.
-        - **Taxa de Evasão Anos Iniciais**: Percentual de alunos que abandonam a escola nos anos iniciais do ensino fundamental.
-        - **IDEB Média**: Média entre IDEB Anos Iniciais e IDEB Anos Finais.
-        - **SAEPI Média**: Média entre SAEPI Português e SAEPI Matemática.
-        """,
+            - **IDEB Anos Iniciais**: Índice de Desenvolvimento da Educação Básica para os anos iniciais.
+            - **IDEB Anos Finais**: Índice de Desenvolvimento da Educação Básica para os anos finais.
+            - **SAEPI Português**: Nota média da avaliação padronizada em Língua Portuguesa (2º ano).
+            - **SAEPI Matemática**: Nota média da avaliação padronizada em Matemática (2º ano).
+            - **Taxa de Evasão Anos Iniciais**: Percentual de alunos que deixaram a escola nos anos iniciais.
+            - **Taxa de Evasão Anos Finais**: Percentual de alunos que deixaram a escola nos anos finais.
+            - **Taxa de Abandono Anos Iniciais**: Percentual de abandono registrado nos anos iniciais.
+            - **Taxa de Abandono Anos Finais**: Percentual de abandono registrado nos anos finais.
+            - **SAEPI Média**: Média aritmética entre os resultados de Português e Matemática.
+            - **IDEB Média**: Média entre IDEB Anos Iniciais e Finais.
+            """,
+
         "perfis": """
-        Através da análise estatística, identificamos 3 perfis distintos de municípios com base em seus indicadores educacionais:
+Através da análise estatística, identificamos 3 perfis distintos de municípios com base em seus indicadores educacionais:
 
-        1. **Baixo Desempenho Educacional**: Municípios com baixo desempenho educacional (IDEB AI: 4.61, IDEB AF: 4.00) e alta taxa de evasão escolar (2.47%).
+1. **Abandono Escolar Crítico**: Municípios com baixo IDEB (AI: 4.61, AF: 4.00), altas taxas de evasão e abandono (Abandono Anos Iniciais: 1.13%, Finais: 3.38%).
 
-        2. **Excelência Educacional**: Municípios com excelência educacional em todos os indicadores: IDEB AI (6.15), IDEB AF (5.12), SAEPI Português (690.37), SAEPI Matemática (586.05).
+2. **Excelência Educacional**: Municípios com desempenho educacional muito alto em todos os indicadores, incluindo IDEB AI (6.15), SAEPI Português (690.37), e baixíssimo abandono.
 
-        3. **Desempenho Educacional Intermediário**: Municípios com desempenho educacional intermediário (IDEB AI: 5.15, IDEB AF: 4.57) e baixa evasão escolar (1.17%).
-        """,
-        "colunas_selecionadas": ["Número do Cluster", "Nome do Cluster", "IDEB Anos Iniciais", 
-                                "IDEB Anos Finais", "Taxa de Evasão Anos Iniciais", "IDEB Média", "SAEPI Média"],
+3. **Desempenho Educacional Intermediário**: Municípios com IDEB médio (AI: 5.15), desempenho SAEPI levemente abaixo da média, e baixas taxas de evasão e abandono.
+""",
+
+       "colunas_selecionadas": [
+    "Número do Cluster", "Nome do Cluster", 
+    "IDEB Anos Iniciais", "IDEB Anos Finais",
+    "SAEPI Português", "SAEPI Matemática",
+    "Taxa de Evasão Anos Iniciais", "Taxa de Evasão Anos Finais",
+    "Taxa de Abandono Anos Iniciais", "Taxa de Abandono Anos Finais",
+    "IDEB Média", "SAEPI Média"
+],
         "colunas_diagnostico": ["Número do Cluster", "Perfil", "Pontos Fortes", "Pontos Fracos", "Recomendações"],
         "coluna_busca": "Cidades",
         "cor_grafico": {
