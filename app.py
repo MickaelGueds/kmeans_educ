@@ -290,20 +290,6 @@ Através da análise estatística, identificamos 3 perfis distintos de municípi
 }
 
 # -----------------------------------
-# 🔹 Menu de Navegação
-# -----------------------------------
-st.sidebar.title("📊 Navegação")
-# Usando radio ao invés de selectbox para evitar a edição de texto
-#pagina = st.sidebar.radio(
-#    "Escolha o tipo de análise:",
-#    ["🏠 Página Inicial", "🏥 Saúde", "👶 Desenvolvimento Infantil", "🛡️ Segurança", "🎓 Educação"]
-#)
-pagina = st.sidebar.radio(
-    "Escolha o tipo de análise:",
-    ["🏠 Página Inicial", "🎓 Educação"]
-)
-
-# -----------------------------------
 # 🔹 Função para carregar dados
 # -----------------------------------
 def carregar_dados(tipo):
@@ -644,92 +630,6 @@ def exibir_analise(tipo):
     st.caption("Diretoria de Monitoramento de Políticas Públicas - DMP")
 
 # -----------------------------------
-# 🔹 Página Inicial
+# 🔹 Exibição da Análise Educacional
 # -----------------------------------
-if pagina == "🏠 Página Inicial":
-    st.title("📊 Análise Multidimensional Municipal por Clusters")
-    
-    st.markdown("""
-    ## Bem-vindo ao Dashboard Integrado de Análises Municipais
-    
-    Esta ferramenta proporciona uma visão integrada do desenvolvimento municipal:
-    
-    ### 🎓 **Educação** 
-    Diagnóstico das condições educacionais, considerando fatores como IDEB, evasão escolar e desempenho em avaliações padronizadas.
-    
-    ## Metodologia
-    
-    Todas as análises utilizam a técnica de clustering K-means para identificar grupos de municípios com características semelhantes. Este agrupamento permite:
-    
-    - **Diagnóstico preciso**: Identificação de perfis específicos de municípios com desafios similares
-    - **Priorização eficiente**: Alocação otimizada de recursos baseada em necessidades reais
-    - **Políticas customizadas**: Desenho de intervenções específicas para cada perfil identificado
-    
-    ## Como utilizar
-    
-    Utilize o menu lateral para navegar entre as diferentes dimensões de análise. Cada seção oferece:
-    
-    - Visualização interativa dos clusters em mapa
-    - Indicadores médios por grupo
-    - Diagnóstico detalhado com pontos fortes, fracos e recomendações
-    - Busca por municípios específicos
-    
-    """)
-    
-    # Exibir mini-cards para navegação alternativa
-    st.markdown("## Escolha uma dimensão para analisar:")
-
-    # Primeira linha com 2 cards
-    col1, col2 = st.columns(2)
-    with col1:
-        #st.info("🏥 Saúde")
-        #if st.button("Ver análise de saúde", key="btn_saude"):
-        #    st.session_state['pagina'] = "🏥 Saúde"
-        #    st.rerun()
-        pass
-            
-    with col2:
-        #st.warning("👶 Desenvolvimento Infantil")
-        #if st.button("Ver análise de desenvolvimento infantil", key="btn_infancia"):
-        #    st.session_state['pagina'] = "👶 Desenvolvimento Infantil"
-        #    st.rerun()
-        pass
-
-    # Segunda linha com 2 cards        
-    col3, col4 = st.columns(2)
-    with col3:
-        #st.success("🛡️ Segurança")
-        #if st.button("Ver análise de segurança", key="btn_seguranca"):
-        #    st.session_state['pagina'] = "🛡️ Segurança"
-        #    st.rerun()
-        pass
-
-    with col4:
-        st.info("🎓 Educação")
-        if st.button("Ver análise de educação", key="btn_educacao"):
-            st.session_state['pagina'] = "🎓 Educação"
-            st.rerun()
-                
-
-# -----------------------------------
-# 🔹 Verificar se a página deve ser alterada com base na session_state
-# -----------------------------------
-if 'pagina' in st.session_state:
-    pagina = st.session_state['pagina']
-    # Limpar a variável de sessão para evitar loops
-    del st.session_state['pagina']
-
-# -----------------------------------
-# 🔹 Roteamento para a página correta
-# -----------------------------------
-#if pagina == "🏥 Saúde":
-#    exibir_analise("saude")
-#    
-#elif pagina == "👶 Desenvolvimento Infantil":
-#    exibir_analise("infancia")
-#    
-#elif pagina == "🛡️ Segurança":
-#    exibir_analise("seguranca")
-#    
-if pagina == "🎓 Educação":
-    exibir_analise("educacao")
+exibir_analise("educacao")
