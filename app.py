@@ -652,19 +652,10 @@ if pagina == "🏠 Página Inicial":
     st.markdown("""
     ## Bem-vindo ao Dashboard Integrado de Análises Municipais
     
-    Esta ferramenta proporciona uma visão integrada de quatro dimensões fundamentais para o desenvolvimento municipal:
+    Esta ferramenta proporciona uma visão integrada do desenvolvimento municipal:
     
-    #    ### 🏥 **Saúde** 
-    #    Avaliação dos indicadores de saúde pública, focando em mortalidade prematura, cobertura vacinal, mortalidade infantil e acesso a exames especializados.
-    #    
-    #    ### 👶 **Desenvolvimento Infantil** 
-    #    Análise dos indicadores relacionados ao desenvolvimento infantil, incluindo mortalidade infantil, alfabetização, cobertura vacinal e atendimento educacional infantil.
-    #    
-    #    ### 🛡️ **Segurança** 
-    #    Avaliação dos indicadores de segurança pública, incluindo taxas de homicídio, violência sexual, mortalidade no trânsito, roubo de veículos e roubo de celulares.
-    #    
-        ### 🎓 **Educação** 
-        Diagnóstico das condições educacionais, considerando fatores como IDEB, evasão escolar e desempenho em avaliações padronizadas.
+    ### 🎓 **Educação** 
+    Diagnóstico das condições educacionais, considerando fatores como IDEB, evasão escolar e desempenho em avaliações padronizadas.
     
     ## Metodologia
     
@@ -691,14 +682,14 @@ if pagina == "🏠 Página Inicial":
     # Primeira linha com 2 cards
     col1, col2 = st.columns(2)
     with col1:
-        #st.info("### 🏥 Saúde")
+        #st.info("🏥 Saúde")
         #if st.button("Ver análise de saúde", key="btn_saude"):
         #    st.session_state['pagina'] = "🏥 Saúde"
         #    st.rerun()
         pass
             
     with col2:
-        #st.warning("### 👶 Desenvolvimento Infantil")
+        #st.warning("👶 Desenvolvimento Infantil")
         #if st.button("Ver análise de desenvolvimento infantil", key="btn_infancia"):
         #    st.session_state['pagina'] = "👶 Desenvolvimento Infantil"
         #    st.rerun()
@@ -707,14 +698,14 @@ if pagina == "🏠 Página Inicial":
     # Segunda linha com 2 cards        
     col3, col4 = st.columns(2)
     with col3:
-        #st.success("### 🛡️ Segurança")
+        #st.success("🛡️ Segurança")
         #if st.button("Ver análise de segurança", key="btn_seguranca"):
         #    st.session_state['pagina'] = "🛡️ Segurança"
         #    st.rerun()
         pass
 
     with col4:
-        st.info("### 🎓 Educação")
+        st.info("🎓 Educação")
         if st.button("Ver análise de educação", key="btn_educacao"):
             st.session_state['pagina'] = "🎓 Educação"
             st.rerun()
